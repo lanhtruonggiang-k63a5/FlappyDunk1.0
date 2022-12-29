@@ -1086,6 +1086,7 @@ GameObject:
   - component: {fileID: 391621465}
   - component: {fileID: 391621463}
   - component: {fileID: 391621462}
+  - component: {fileID: 391621464}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -1109,7 +1110,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: de0dd1fa4d97b1f4db01eaf316d44d05, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -1130,6 +1131,23 @@ CircleCollider2D:
   m_Offset: {x: 0.0040798187, y: 0}
   serializedVersion: 2
   m_Radius: 1.2220817
+--- !u!114 &391621464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391621461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 394712cf1c6d4e64ab2608223eb0c223, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bounce: {fileID: 6200000, guid: e07b21486e59a7d40be42913efa7061a, type: 2}
+  noBounce: {fileID: 6200000, guid: de0dd1fa4d97b1f4db01eaf316d44d05, type: 2}
+  velocity: 7
+  gravityInGame: 1.7
+  startState: 0
 --- !u!4 &391621465
 Transform:
   m_ObjectHideFlags: 0
@@ -4366,7 +4384,7 @@ GameObject:
   - component: {fileID: 1496606161}
   m_Layer: 0
   m_Name: Floor
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4405,7 +4423,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.05498281, y: 0}
+  m_Offset: {x: -0.05498278, y: -0.0318996}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4416,7 +4434,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.4620726, y: 1}
+  m_Size: {x: 1.4620726, y: 0.9362008}
   m_EdgeRadius: 0
 --- !u!4 &1496606164
 Transform:
@@ -4909,7 +4927,7 @@ GameObject:
   - component: {fileID: 1615874322}
   m_Layer: 0
   m_Name: Celling
-  m_TagString: Untagged
+  m_TagString: Terrain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4948,7 +4966,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.024133444, y: 0.038177013}
+  m_Offset: {x: 0.024133444, y: 0.03817688}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4959,7 +4977,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 4.9447885, y: 0.923646}
+  m_Size: {x: 4.9447885, y: 0.9236462}
   m_EdgeRadius: 0
 --- !u!4 &1615874324
 Transform:
