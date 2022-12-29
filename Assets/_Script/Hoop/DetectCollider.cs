@@ -4,15 +4,47 @@ using UnityEngine;
 
 public class DetectCollider : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static DetectCollider Instance { get; private set; }
+
+    public List<int> listState;
     void Start()
     {
-        
+        Instance = this;
+        listState = new List<int>();
+    }
+    public bool CheckSwish()
+    {
+        if (listState.Contains((int)EnumState.edge))
+        {
+            return false;
+        }
+        return true;
+    }
+    public bool CheckReverse()
+    {
+        var indexBelow = listState.LastIndexOf((int)EnumState.below);
+        var indexCenter = listState.LastIndexOf((int)EnumState.center);
+        var indexAbove = listState.LastIndexOf((int)EnumState.above);
+        if(indexBelow<indexCenter || indexCenter< indexAbove){
+            return true;
+        }
+        return false;
+
+    }
+    public bool CheckNotComplete(){
+        return listState.Contains((int)EnumState.above)
+            && listState.Contains((int)EnumState.center)
+            && listState.Contains((int)EnumState.below);
+    }
+    public void ResetList(){
+        listState.Clear();
+    }
+    public bool CheckComplete(){
+        if(!CheckNotComplete() && !CheckReverse()){
+            return true;
+        }
+        return false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

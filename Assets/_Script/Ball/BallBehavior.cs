@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class BallBehavior : MonoBehaviour
 {
+    //Singleton
     public static BallBehavior Instance { get; private set; }
 
+
+    //Component
     private PolygonCollider2D pc;
     private Rigidbody2D rb;
 
@@ -13,11 +16,17 @@ public class BallBehavior : MonoBehaviour
     // public PhysicsMaterial2D noBounce;
 
 
-    //
+    //[SerializeField]
     [SerializeField] private float velocity;
     [SerializeField] private float gravityInGame;
 
+    //public
+    
+
+    //private
     private bool startState;
+    public bool isDeath;
+
     void Start()
     {
         Instance = this;
@@ -27,7 +36,7 @@ public class BallBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixUpdate()
     {
         OnFirstClick();
         if (OnClick())
@@ -49,6 +58,7 @@ public class BallBehavior : MonoBehaviour
         rb.sharedMaterial = null;
         rb.gravityScale = 0f;
         startState=false;
+        
     }
     private void StartState(){
         startState=true;
