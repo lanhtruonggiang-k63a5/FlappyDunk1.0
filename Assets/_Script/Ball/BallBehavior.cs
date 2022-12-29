@@ -13,6 +13,7 @@ public class BallBehavior : MonoBehaviour
     private Rigidbody2D rb;
 
     public PhysicsMaterial2D bounce;
+    public GameObject hoopSpawner;
     // public PhysicsMaterial2D noBounce;
 
 
@@ -36,7 +37,7 @@ public class BallBehavior : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixUpdate()
+    void Update()
     {
         OnFirstClick();
         if (OnClick())
@@ -63,6 +64,8 @@ public class BallBehavior : MonoBehaviour
     private void StartState(){
         startState=true;
         rb.gravityScale = gravityInGame;
+        hoopSpawner.SetActive(true);
+
     }
     private void BounceBall(){
         rb.velocity += Vector2.up * velocity;
@@ -77,6 +80,7 @@ public class BallBehavior : MonoBehaviour
         }
         
     }
+    
 
     
 }

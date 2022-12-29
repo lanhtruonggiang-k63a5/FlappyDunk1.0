@@ -19,6 +19,7 @@ public class HoopSpawner : MonoBehaviour
     void Start()
     {
         Instance = this;
+        pool = new List<GameObject>();
         for (int i = 0; i < size; i++)
         {
             pool.Add(Instantiate(prefab));

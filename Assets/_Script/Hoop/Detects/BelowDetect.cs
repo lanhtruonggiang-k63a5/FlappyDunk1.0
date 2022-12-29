@@ -13,5 +13,6 @@ public class BelowDetect : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         DetectCollider.Instance.listState.Add((int)EnumState.below);
+        Debug.Log("collide below");
     }
 }

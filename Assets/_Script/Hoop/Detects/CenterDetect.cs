@@ -13,5 +13,6 @@ public class CenterDetect : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         DetectCollider.Instance.listState.Add((int)EnumState.center);
+        Debug.Log("collide Center");
     }
 }
