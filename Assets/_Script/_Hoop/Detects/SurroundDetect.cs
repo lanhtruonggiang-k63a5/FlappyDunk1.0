@@ -10,20 +10,17 @@ public class SurroundDetect : MonoBehaviour
     {
         pc2D = GetComponent<BoxCollider2D>();
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        DetectCollider.Instance.ResetList();
         Debug.Log("collide Surround");
     }
-    private void OnCollisionExit2D(Collision2D other)
+    private void OnTriggerExit2D(Collider2D other)
     {
         Debug.Log("Swish || Reverse || Complete");
         Debug.Log(DetectCollider.Instance.IsSwish());
         Debug.Log(DetectCollider.Instance.IsComplete());
         Debug.Log(DetectCollider.Instance.IsReverse());
-
-        DetectCollider.Instance.ResetList();
-        
         Debug.Log("exit Surround");
     }
 }

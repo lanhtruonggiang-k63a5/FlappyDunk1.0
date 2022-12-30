@@ -23,6 +23,7 @@ public class WingAnim : MonoBehaviour
     }
     public void SetAnimChopWing()
     {
+        Debug.Log("Chopping");
         anim.SetInteger("state", (int)WingState.chop);
     }
     

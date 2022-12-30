@@ -6,8 +6,8 @@ using System.Linq;
 
 public class HoopSpawner : MonoBehaviour
 {
-    public static HoopSpawner Instance { get; private set; }
-    private List<GameObject> pool;
+    public static HoopSpawner Instance ;
+    private Queue<GameObject> pool;
     public GameObject prefab;
 
     [SerializeField] private int size;
@@ -21,76 +21,42 @@ public class HoopSpawner : MonoBehaviour
     void Start()
     {
         Instance = this;
-        pool = new List<GameObject>();
+        pool = new Queue<GameObject>();
         for (int i = 0; i < size; i++)
         {
-            pool.Add(Instantiate(prefab));
-            pool[i].SetActive(false);
+            GameObject obj = Instantiate(prefab);
             
+            obj.SetActive(false);
             
+            pool.Enqueue(obj);
         }
+        
     }
     private void Update()
     {
         if (countSpawnTime > spawnTime)
         {
             SpawnItem();
-            countSpawnTime=0f;
+            countSpawnTime = 0f;
         }
         countSpawnTime += Time.deltaTime;
     }
-    private float SetRandomHeight(){
-        return UnityEngine.Random.Range(minHeight,maxHeight);
+    private float SetRandomHeight()
+    {
+        return UnityEngine.Random.Range(minHeight, maxHeight);
     }
-    private void SetRandomPosition(GameObject obj){
-        obj.transform.position = transform.position + new Vector3(0f,SetRandomHeight(),0f);
+    private void SetRandomPosition(GameObject obj)
+    {
+        obj.transform.position = transform.position + new Vector3(0f, SetRandomHeight(), 0f);
     }
 
-    public void SpawnItem(){
+    public void SpawnItem()
+    {
         
-        // foreach (GameObject item in pool)
-        // {
-        //     if (!item.activeSelf)
-        //     {
-        //         item.SetActive(true);
-        //         SetRandomPosition(item);
-        //         break;
-        //     } 
-        // }
-        for (int i = 0; i <= size; i++)
-        {
-            if (i==size)
-            {
-                i=0;
-            }
-            else if (!pool[i].activeSelf)
-            {
-                pool[i].SetActive(true);
-                SetRandomPosition(pool[i]);
-                break;
-            }
-        }
-        // var i = 0;
-        // while (!pool[i].activeSelf)
-        // {
-        //     pool[i].SetActive(true);
-        //     SetRandomPosition(pool[i]);
-        //     break;
-        // }
+        GameObject objectToSpawn = pool.Dequeue();
+        objectToSpawn.SetActive(true);
+        SetRandomPosition(objectToSpawn);
+        pool.Enqueue(objectToSpawn);
     }
-    public void DeactiveItem(){
-        // pool.Last().SetActive(false);
-        for (int i = 0; i < size; i++)
-        {
-            if (pool[i].activeSelf)
-            {
-                pool[i].SetActive(false);
-                break;
-            }
-        }
-    }
-    /// <summary>
-    /// Update is called every frame, if the MonoBehaviour is enabled.
-    /// </summary>
-    
+   
 }

@@ -5,6 +5,10 @@ TagManager:
   serializedVersion: 2
   tags:
   - Terrain
+  - above
+  - below
+  - center
+  - surround
   layers:
   - Default
   - TransparentFX

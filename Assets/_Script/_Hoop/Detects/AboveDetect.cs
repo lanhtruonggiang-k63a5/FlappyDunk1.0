@@ -10,10 +10,8 @@ public class AboveDetect : MonoBehaviour
     {
         pc2D = GetComponent<BoxCollider2D>();
     }
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         DetectCollider.Instance.listState.Add((int)EnumState.above);
-        Debug.Log("collide above");
-
     }
 }

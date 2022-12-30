@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BallBehavior : MonoBehaviour
 {
@@ -85,7 +86,6 @@ public class BallBehavior : MonoBehaviour
             SoundManager.Instance.PlayBounce();
             IsDeath=true;
             rb.sharedMaterial = bounce;
-            SoundManager.Instance.PlayCrash();
             countBounceOnTerrain++;
         }
         
@@ -96,6 +96,25 @@ public class BallBehavior : MonoBehaviour
         yield return new WaitForSeconds(1f);
     }
 
+    /// <summary>
+    /// Sent when a collider on another object stops touching this
+    /// object's collider (2D physics only).
+    /// </summary>
+    /// <param name="other">The Collision2D data associated with this collision.</param>
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        Debug.Log("Swish || Reverse || Complete");
+        Debug.Log(DetectCollider.Instance.IsSwish());
+        Debug.Log(DetectCollider.Instance.IsComplete());
+        Debug.Log(DetectCollider.Instance.IsReverse());
+        Debug.Log("exit Surround");
+    }
+    public void ReloadScene(){
+        if(Input.GetKeyDown(KeyCode.Space)){
+            SceneManager.LoadScene(0);
+        }
+    }
+    
     
 
     
