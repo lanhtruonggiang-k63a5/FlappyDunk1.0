@@ -30,9 +30,9 @@ public class Score : MonoBehaviour
             swish = 0;
         }
 
-        if (DetectCollider.Instance.CheckReverse() || DetectCollider.Instance.CheckNotComplete())
+        if (DetectCollider.Instance.CheckReverse() || DetectCollider.Instance.CheckComplete())
         {
-            BallBehavior.Instance.isDeath = true;
+           
         }
 
         yield return new WaitForSeconds(1f);

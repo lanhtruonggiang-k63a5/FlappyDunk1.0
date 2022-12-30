@@ -14,7 +14,7 @@ public class BallBehavior : MonoBehaviour
 
     public PhysicsMaterial2D bounce;
     public GameObject hoopSpawner;
-    // public PhysicsMaterial2D noBounce;
+    
 
 
     //[SerializeField]
@@ -22,11 +22,11 @@ public class BallBehavior : MonoBehaviour
     [SerializeField] private float gravityInGame;
 
     //public
-    
+    public bool IsDeath { get; private set; }
 
     //private
     private bool startState;
-    public bool isDeath;
+    private int countBounceOnTerrain;
 
     void Start()
     {
@@ -40,15 +40,15 @@ public class BallBehavior : MonoBehaviour
     void Update()
     {
         OnFirstClick();
-        if (OnClick())
+        if (OnClick() && !IsDeath)
         {
-            BounceBall();
+            UpBall();
+            WingAnim.Instance.SetAnimFlap();
         }
     }
 
     bool OnClick(){
-        if(startState) return Input.GetMouseButtonDown(0);
-        return false;
+        return Input.GetMouseButtonDown(0);
     }
     void OnFirstClick(){
         if(Input.GetMouseButtonDown(0) && !startState){
@@ -59,15 +59,16 @@ public class BallBehavior : MonoBehaviour
         rb.sharedMaterial = null;
         rb.gravityScale = 0f;
         startState=false;
-        
     }
     private void StartState(){
         startState=true;
         rb.gravityScale = gravityInGame;
         hoopSpawner.SetActive(true);
+        SoundManager.Instance.PlayWhistle();
 
     }
-    private void BounceBall(){
+    private void UpBall(){
+        SoundManager.Instance.PlayFlap();
         rb.velocity += Vector2.up * velocity;
     }
     
@@ -75,11 +76,26 @@ public class BallBehavior : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Terrain"))
         {
+            if(countBounceOnTerrain==0){
+                SoundManager.Instance.PlayWrong();
+            }
+            if(countBounceOnTerrain==1){
+                WingPop();
+            }
+            SoundManager.Instance.PlayBounce();
+            IsDeath=true;
             rb.sharedMaterial = bounce;
-
+            SoundManager.Instance.PlayCrash();
+            countBounceOnTerrain++;
         }
         
     }
+    private IEnumerator WingPop(){
+        SoundManager.Instance.PlayCrash();
+        WingAnim.Instance.SetAnimChopWing();
+        yield return new WaitForSeconds(1f);
+    }
+
     
 
     

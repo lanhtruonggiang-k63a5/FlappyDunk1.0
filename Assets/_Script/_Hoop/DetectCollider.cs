@@ -31,7 +31,7 @@ public class DetectCollider : MonoBehaviour
         return false;
 
     }
-    public bool CheckNotComplete(){
+    public bool CheckComplete(){
         return listState.Contains((int)EnumState.above)
             && listState.Contains((int)EnumState.center)
             && listState.Contains((int)EnumState.below);
@@ -39,12 +39,7 @@ public class DetectCollider : MonoBehaviour
     public void ResetList(){
         listState.Clear();
     }
-    public bool CheckComplete(){
-        if(!CheckNotComplete() && !CheckReverse()){
-            return true;
-        }
-        return false;
-    }
+    
 
 
 }

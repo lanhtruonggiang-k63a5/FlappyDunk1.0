@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public static GameManager Instance { get; private set; }    
+    
+    
     void Start()
     {
-        
+        Instance = this;
+
     }
 
     // Update is called once per frame
@@ -15,4 +18,12 @@ public class GameManager : MonoBehaviour
     {
         
     }
+    public void GameOver(){
+        if(BallBehavior.Instance.IsDeath){
+            
+        }
+    } 
+    
+
+
 }
