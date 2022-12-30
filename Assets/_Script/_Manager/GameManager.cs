@@ -18,11 +18,7 @@ public class GameManager : MonoBehaviour
     {
         
     }
-    public void GameOver(){
-        if(BallBehavior.Instance.IsDeath){
-            
-        }
-    } 
+    
     
 
 

@@ -228,7 +228,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1615263650639197753, guid: 4010cd77f4021ee4ab450446fa76cacf, type: 3}
-  size: 5
+  size: 20
   minHeight: -3
   maxHeight: 3
   spawnTime: 2

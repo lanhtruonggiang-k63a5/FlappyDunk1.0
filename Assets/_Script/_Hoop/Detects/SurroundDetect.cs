@@ -17,7 +17,13 @@ public class SurroundDetect : MonoBehaviour
     }
     private void OnCollisionExit2D(Collision2D other)
     {
+        Debug.Log("Swish || Reverse || Complete");
+        Debug.Log(DetectCollider.Instance.IsSwish());
+        Debug.Log(DetectCollider.Instance.IsComplete());
+        Debug.Log(DetectCollider.Instance.IsReverse());
+
         DetectCollider.Instance.ResetList();
+        
         Debug.Log("exit Surround");
     }
 }

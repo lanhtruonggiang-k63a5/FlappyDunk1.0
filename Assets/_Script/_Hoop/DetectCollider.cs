@@ -12,7 +12,7 @@ public class DetectCollider : MonoBehaviour
         Instance = this;
         listState = new List<int>();
     }
-    public bool CheckSwish()
+    public bool IsSwish()
     {
         if (listState.Contains((int)EnumState.edge))
         {
@@ -20,7 +20,7 @@ public class DetectCollider : MonoBehaviour
         }
         return true;
     }
-    public bool CheckReverse()
+    public bool IsReverse()
     {
         var indexBelow = listState.LastIndexOf((int)EnumState.below);
         var indexCenter = listState.LastIndexOf((int)EnumState.center);
@@ -31,7 +31,7 @@ public class DetectCollider : MonoBehaviour
         return false;
 
     }
-    public bool CheckComplete(){
+    public bool IsComplete(){
         return listState.Contains((int)EnumState.above)
             && listState.Contains((int)EnumState.center)
             && listState.Contains((int)EnumState.below);

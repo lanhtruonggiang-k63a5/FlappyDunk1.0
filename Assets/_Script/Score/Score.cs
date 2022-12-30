@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
     private IEnumerator countScore()
     {
 
-        if (DetectCollider.Instance.CheckSwish())
+        if (DetectCollider.Instance.IsSwish())
         {
             swish++;
         }
@@ -30,7 +30,7 @@ public class Score : MonoBehaviour
             swish = 0;
         }
 
-        if (DetectCollider.Instance.CheckReverse() || DetectCollider.Instance.CheckComplete())
+        if (DetectCollider.Instance.IsReverse() || DetectCollider.Instance.IsComplete())
         {
            
         }
