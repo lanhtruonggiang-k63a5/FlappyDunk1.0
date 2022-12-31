@@ -19,6 +19,7 @@ public class WingAnim : MonoBehaviour
     }
 
     public void SetAnimFlap(){
+        Debug.Log("Flapping");
         anim.SetInteger("state",(int)WingState.flap);
     }
     public void SetAnimChopWing()

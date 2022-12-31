@@ -15,7 +15,7 @@ public class BallBehavior : MonoBehaviour
 
     public PhysicsMaterial2D bounce;
     public GameObject hoopSpawner;
-    
+
 
 
     //[SerializeField]
@@ -32,7 +32,7 @@ public class BallBehavior : MonoBehaviour
     void Start()
     {
         Instance = this;
-        pc = GetComponent<PolygonCollider2D>();    
+        pc = GetComponent<PolygonCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         InitialState();
     }
@@ -46,76 +46,76 @@ public class BallBehavior : MonoBehaviour
             UpBall();
             WingAnim.Instance.SetAnimFlap();
         }
+        ReloadScene();
     }
 
-    bool OnClick(){
+    bool OnClick()
+    {
         return Input.GetMouseButtonDown(0);
     }
-    void OnFirstClick(){
-        if(Input.GetMouseButtonDown(0) && !startState){
+    void OnFirstClick()
+    {
+        if (Input.GetMouseButtonDown(0) && !startState)
+        {
             StartState();
         }
     }
-    private void InitialState(){
+    private void InitialState()
+    {
         rb.sharedMaterial = null;
         rb.gravityScale = 0f;
-        startState=false;
+        startState = false;
     }
-    private void StartState(){
-        startState=true;
+    private void StartState()
+    {
+        startState = true;
         rb.gravityScale = gravityInGame;
         hoopSpawner.SetActive(true);
         SoundManager.Instance.PlayWhistle();
 
     }
-    private void UpBall(){
+    private void UpBall()
+    {
         SoundManager.Instance.PlayFlap();
         rb.velocity += Vector2.up * velocity;
     }
-    
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.gameObject.CompareTag("Terrain"))
         {
-            if(countBounceOnTerrain==0){
+            if (countBounceOnTerrain == 0)
+            {
                 SoundManager.Instance.PlayWrong();
             }
-            if(countBounceOnTerrain==1){
-                WingPop();
+            if (countBounceOnTerrain == 1)
+            {
+                StartCoroutine(WingPop());
             }
             SoundManager.Instance.PlayBounce();
-            IsDeath=true;
+            IsDeath = true;
             rb.sharedMaterial = bounce;
             countBounceOnTerrain++;
         }
-        
+
     }
-    private IEnumerator WingPop(){
+    private IEnumerator WingPop()
+    {
         SoundManager.Instance.PlayCrash();
         WingAnim.Instance.SetAnimChopWing();
         yield return new WaitForSeconds(1f);
     }
 
-    /// <summary>
-    /// Sent when a collider on another object stops touching this
-    /// object's collider (2D physics only).
-    /// </summary>
-    /// <param name="other">The Collision2D data associated with this collision.</param>
-    private void OnCollisionExit2D(Collision2D other)
+
+    public void ReloadScene()
     {
-        Debug.Log("Swish || Reverse || Complete");
-        Debug.Log(DetectCollider.Instance.IsSwish());
-        Debug.Log(DetectCollider.Instance.IsComplete());
-        Debug.Log(DetectCollider.Instance.IsReverse());
-        Debug.Log("exit Surround");
-    }
-    public void ReloadScene(){
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
             SceneManager.LoadScene(0);
         }
     }
-    
-    
 
-    
+
+
+
 }

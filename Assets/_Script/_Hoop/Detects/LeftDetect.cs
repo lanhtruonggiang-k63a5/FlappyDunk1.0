@@ -13,6 +13,5 @@ public class LeftDetect : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         DetectCollider.Instance.listState.Add((int)EnumState.edge);
-        Debug.Log("collide left");
     }
 }
