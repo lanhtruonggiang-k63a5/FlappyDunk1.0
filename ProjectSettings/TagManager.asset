@@ -9,6 +9,7 @@ TagManager:
   - below
   - center
   - surround
+  - aboveTerrain
   layers:
   - Default
   - TransparentFX

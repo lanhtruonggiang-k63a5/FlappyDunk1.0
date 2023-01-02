@@ -10,7 +10,7 @@ public class BallBehavior : MonoBehaviour
 
 
     //Component
-    private PolygonCollider2D pc;
+    private CircleCollider2D pc;
     private Rigidbody2D rb;
 
     public PhysicsMaterial2D bounce;
@@ -23,8 +23,8 @@ public class BallBehavior : MonoBehaviour
     [SerializeField] private float gravityInGame;
 
     //public
-    public bool IsDeath { get; private set; }
-
+    public bool isDeath;
+    
     //private
     private bool startState;
     private int countBounceOnTerrain;
@@ -32,7 +32,7 @@ public class BallBehavior : MonoBehaviour
     void Start()
     {
         Instance = this;
-        pc = GetComponent<PolygonCollider2D>();
+        pc = GetComponent<CircleCollider2D>();
         rb = GetComponent<Rigidbody2D>();
         InitialState();
     }
@@ -41,10 +41,11 @@ public class BallBehavior : MonoBehaviour
     void Update()
     {
         OnFirstClick();
-        if (OnClick() && !IsDeath)
+        if (OnClick() && !isDeath)
         {
             UpBall();
-            WingAnim.Instance.SetAnimFlap();
+            WingAnimBack.Instance.CallAnimFlap();
+            WingAnimFront.Instance.CallAnimFlap();
         }
         ReloadScene();
     }
@@ -65,6 +66,7 @@ public class BallBehavior : MonoBehaviour
         rb.sharedMaterial = null;
         rb.gravityScale = 0f;
         startState = false;
+        
     }
     private void StartState()
     {
@@ -72,7 +74,7 @@ public class BallBehavior : MonoBehaviour
         rb.gravityScale = gravityInGame;
         hoopSpawner.SetActive(true);
         SoundManager.Instance.PlayWhistle();
-
+        Pause.Instance.pauseButton.SetActive(true);
     }
     private void UpBall()
     {
@@ -93,8 +95,8 @@ public class BallBehavior : MonoBehaviour
                 StartCoroutine(WingPop());
             }
             SoundManager.Instance.PlayBounce();
-            IsDeath = true;
-            rb.sharedMaterial = bounce;
+            isDeath = true;
+            SetMaterialBounce();
             countBounceOnTerrain++;
         }
 
@@ -102,8 +104,12 @@ public class BallBehavior : MonoBehaviour
     private IEnumerator WingPop()
     {
         SoundManager.Instance.PlayCrash();
-        WingAnim.Instance.SetAnimChopWing();
+        WingAnimFront.Instance.SetAnimChopWing();
+        WingAnimBack.Instance.SetAnimChopWing();
         yield return new WaitForSeconds(1f);
+    }
+    public void SetMaterialBounce(){
+        rb.sharedMaterial = bounce;
     }
 
 
@@ -114,7 +120,7 @@ public class BallBehavior : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-
+    
 
 
 

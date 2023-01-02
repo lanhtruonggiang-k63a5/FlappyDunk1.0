@@ -1,40 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Score : MonoBehaviour
 {
+    public static Score Instance { get; private set; }
     // Start is called before the first frame update
-    public int score { get; set; }
+ 
+    public int score;
+    public int countSwish;
+    public int highScore;
+    public int lastScore;
 
-    [SerializeField] private int swish;
+    public Text scoreText;
+
     void Start()
     {
-        swish = 0;
+        Instance = this;
+        score = 0;
+        scoreText = GetComponent<Text>();
+        
     }
 
-    // Update is called once per frame
     void Update()
     {
-        StartCoroutine(countScore());
+
+        LoadBestScore();
+        scoreText.text = score.ToString();
+
     }
-    private IEnumerator countScore()
+    void LoadBestScore()
     {
-
-        if (DetectCollider.Instance.IsSwish())
+        if (score > highScore)
         {
-            swish++;
-        }
-        else
-        {
-            swish = 0;
+            highScore = score;
         }
 
-        if (DetectCollider.Instance.IsReverse() || DetectCollider.Instance.IsComplete())
-        {
-           
-        }
 
-        yield return new WaitForSeconds(1f);
     }
 }
+    

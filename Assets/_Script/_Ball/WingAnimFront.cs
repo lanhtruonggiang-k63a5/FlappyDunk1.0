@@ -2,31 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WingAnim : MonoBehaviour
+public class WingAnimFront : MonoBehaviour
 {
-    public static WingAnim Instance { get; private set; }
+    public static WingAnimFront Instance { get; private set; }
     public enum WingState
     {
         flap,
         idle,
         chop
     }
-    public Animator anim;
+    private Animator anim;
     // Start is called before the first frame update
     void Start()
     {
         Instance = this;
-        // anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
-    public void CallAnimFlap(){
+    public void CallAnimFlap()
+    {
         StartCoroutine(SetAnimFlap());
     }
-    private IEnumerator SetAnimFlap(){
+    private IEnumerator SetAnimFlap()
+    {
         // Debug.Log("Flapping");
-        anim.SetInteger("state",(int)WingState.flap);
+        anim.SetInteger("state", (int)WingState.flap);
         yield return new WaitForSeconds(0.3f);
         anim.SetInteger("state", (int)WingState.idle);
-        
+
 
         // anim.Play("WingFlapBack");
     }
@@ -34,9 +36,9 @@ public class WingAnim : MonoBehaviour
     {
         // Debug.Log("Chopping");
         anim.SetInteger("state", (int)WingState.chop);
-        
+
     }
-    
+
 
 
 }
