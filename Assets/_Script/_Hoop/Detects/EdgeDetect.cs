@@ -12,7 +12,7 @@ public class EdgeDetect : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        DetectCollider.Instance.listState.Add((int)EnumState.edge);
+        DetectCollider.listState.Add((int)EnumState.edge);
     }
     
 }

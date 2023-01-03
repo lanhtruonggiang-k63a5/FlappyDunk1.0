@@ -13,6 +13,7 @@ public class BallBehavior : MonoBehaviour
     private CircleCollider2D pc;
     private Rigidbody2D rb;
 
+    public PhysicsMaterial2D noBounce;
     public PhysicsMaterial2D bounce;
     public GameObject hoopSpawner;
 
@@ -22,6 +23,7 @@ public class BallBehavior : MonoBehaviour
     [SerializeField] private float velocity;
     [SerializeField] private float gravityInGame;
 
+    [SerializeField] private float posX;
     //public
     public bool isDeath;
     
@@ -40,6 +42,7 @@ public class BallBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        SetTransformX(posX);
         OnFirstClick();
         if (OnClick() && !isDeath)
         {
@@ -49,6 +52,11 @@ public class BallBehavior : MonoBehaviour
         }
         ReloadScene();
     }
+    void SetTransformX(float n)
+    {
+        rb.position = new Vector2(n, rb.position.y);
+    }
+
 
     bool OnClick()
     {
@@ -63,7 +71,7 @@ public class BallBehavior : MonoBehaviour
     }
     private void InitialState()
     {
-        rb.sharedMaterial = null;
+        rb.sharedMaterial = noBounce;
         rb.gravityScale = 0f;
         startState = false;
         

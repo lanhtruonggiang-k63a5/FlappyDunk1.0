@@ -19,7 +19,7 @@ public class Score : MonoBehaviour
         Instance = this;
         score = 0;
         scoreText = GetComponent<Text>();
-        
+        countSwish=1;
     }
 
     void Update()

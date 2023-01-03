@@ -12,7 +12,7 @@ public class BelowDetect : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        DetectCollider.Instance.listState.Add((int)EnumState.below);
+        DetectCollider.listState.Add((int)EnumState.below);
     }
     
 }

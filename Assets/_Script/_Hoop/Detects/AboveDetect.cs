@@ -12,6 +12,6 @@ public class AboveDetect : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        DetectCollider.Instance.listState.Add((int)EnumState.above);
+        DetectCollider.listState.Add((int)EnumState.above);
     }
 }

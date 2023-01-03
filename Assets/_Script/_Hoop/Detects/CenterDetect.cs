@@ -12,6 +12,6 @@ public class CenterDetect : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        DetectCollider.Instance.listState.Add((int)EnumState.center);
+        DetectCollider.listState.Add((int)EnumState.center);
     }
 }

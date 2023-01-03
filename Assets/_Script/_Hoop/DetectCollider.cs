@@ -2,17 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DetectCollider : MonoBehaviour
+public  class DetectCollider : MonoBehaviour
 {
-    public static DetectCollider Instance { get; private set; }
-
-    public List<int> listState;
+    // public static DetectCollider Instance { get; private set; }
+    public static List<int> listState;
     void Start()
     {
-        Instance = this;
+        // Instance = this;
         listState = new List<int>();
     }
-    public bool IsSwish()
+    
+    public static bool IsSwish()
     {
         if (listState.Contains((int)EnumState.edge))
         {
@@ -20,26 +20,55 @@ public class DetectCollider : MonoBehaviour
         }
         return true;
     }
-    public bool IsReverse()
+    public static bool IsReverse()
     {
-        var indexBelow = listState.LastIndexOf((int)EnumState.below);
-        var indexCenter = listState.LastIndexOf((int)EnumState.center);
-        var indexAbove = listState.LastIndexOf((int)EnumState.above);
-        if(indexBelow<indexCenter || indexCenter< indexAbove){
+        int indexAbove = listState.LastIndexOf((int)EnumState.above);
+        int indexCenter = listState.LastIndexOf((int)EnumState.center);
+        int indexBelow = listState.LastIndexOf((int)EnumState.below);
+        if (indexBelow < indexCenter ){
+            Debug.Log("below:"+indexBelow+"center:"+indexCenter);
+            return true;
+        }else if (indexCenter < indexAbove)
+        {
+            Debug.Log("center:" + indexCenter + "above:" + indexAbove);
             return true;
         }
         return false;
 
     }
-    public bool IsComplete(){
-        return listState.Contains((int)EnumState.above)
-            && listState.Contains((int)EnumState.center)
-            && listState.Contains((int)EnumState.below);
+    public static bool IsComplete()
+    {
+        bool isFalse = true;
+        string stringList = "";
+        if (!listState.Contains((int)EnumState.above))
+        {
+            
+            // Debug.Log("lack above");
+            isFalse= false;
+           
+        }
+        if (!listState.Contains((int)EnumState.center))
+        {
+            // Debug.Log("lack center");
+            isFalse = false;
+        }
+        if (!listState.Contains((int)EnumState.below))
+        {
+            // Debug.Log("lack below");
+            isFalse = false;
+        }
+        foreach (int item in listState)
+        {
+            stringList+=" "+item;
+        }
+        Debug.Log("sl:"+ stringList);
+        return isFalse;
     }
-    public void ResetList(){
+    public static void ResetList()
+    {
         listState.Clear();
     }
-    
+
 
 
 }

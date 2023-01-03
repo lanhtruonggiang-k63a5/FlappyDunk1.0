@@ -10,16 +10,17 @@ TagManager:
   - center
   - surround
   - aboveTerrain
+  - ball
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - BackGround
   - Water
   - UI
-  - 
-  - 
-  - 
+  - WingBack
+  - Ball
+  - WingFront
   - 
   - 
   - 

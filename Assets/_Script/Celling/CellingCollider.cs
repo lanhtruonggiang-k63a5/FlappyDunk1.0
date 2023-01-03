@@ -12,11 +12,6 @@ public class CellingCollider : MonoBehaviour
         bc = GetComponent<BoxCollider2D>();    
     }
 
-    // Update is called once per frame
-    void Update()
-    {
- 
-    }
     private void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("Lose");
