@@ -17,7 +17,7 @@ public class BallBehavior : MonoBehaviour
     public PhysicsMaterial2D bounce;
     public GameObject hoopSpawner;
 
-
+    
 
     //[SerializeField]
     [SerializeField] private float velocity;
@@ -42,7 +42,7 @@ public class BallBehavior : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SetTransformX(posX);
+        // SetTransformX(posX);
         OnFirstClick();
         if (OnClick() && !isDeath)
         {
@@ -54,7 +54,9 @@ public class BallBehavior : MonoBehaviour
     }
     void SetTransformX(float n)
     {
-        rb.position = new Vector2(n, rb.position.y);
+        
+            rb.position = new Vector2(n, rb.position.y);
+        
     }
 
 
@@ -93,9 +95,13 @@ public class BallBehavior : MonoBehaviour
         // rb.MovePosition(Vector2.up*velocity);
         // rb.MovePosition(rb.position + Vector2.up );
         // rb.AddForce(transform.up*velocity,ForceMode2D.Impulse);
-        rb.AddRelativeForce(Vector2.up*velocity);
+        // rb.AddRelativeForce(Vector2.up*velocity);
 
+        // rb.AddForce(Vector2.up * velocity, ForceMode2D.Impulse);
+        rb.velocity = Vector2.zero;
+        rb.velocity += Vector2.up * velocity;
     }
+    
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -111,9 +117,6 @@ public class BallBehavior : MonoBehaviour
             }
             SoundManager.Instance.PlayBounce();
             isDeath = true;
-            Debug.Log(Score.Instance.score);
-            Debug.Log(Score.Instance.lastScore);
-            Debug.Log(PlayerPrefs.GetInt("bestScore"));
             SetMaterialBounce();
             countBounceOnTerrain++;
         }

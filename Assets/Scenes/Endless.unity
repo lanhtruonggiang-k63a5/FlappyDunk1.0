@@ -217,7 +217,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 71616076}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 68199227}
@@ -236,10 +236,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   prefab: {fileID: 1615263650639197753, guid: 4010cd77f4021ee4ab450446fa76cacf, type: 3}
-  size: 2
+  size: 4
   minHeight: 0
   maxHeight: 2
-  spawnTime: 3.5
+  spawnTime: 3
 --- !u!1 &89645957
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,7 +963,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 205546080}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.81, y: -94.4, z: 0.09047904}
+  m_LocalPosition: {x: 6, y: 9.4, z: 0.09047904}
   m_LocalScale: {x: 0.17, y: 1.768, z: 1}
   m_Children: []
   m_Father: {fileID: 50074857}
@@ -1531,7 +1531,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 1
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -1569,8 +1569,8 @@ MonoBehaviour:
   noBounce: {fileID: 6200000, guid: de0dd1fa4d97b1f4db01eaf316d44d05, type: 2}
   bounce: {fileID: 6200000, guid: e07b21486e59a7d40be42913efa7061a, type: 2}
   hoopSpawner: {fileID: 68199226}
-  velocity: 15
-  gravityInGame: 1.5
+  velocity: 6
+  gravityInGame: 2
   posX: 0
   isDeath: 0
 --- !u!4 &391621465
@@ -5235,6 +5235,7 @@ GameObject:
   - component: {fileID: 1464565973}
   - component: {fileID: 1464565975}
   - component: {fileID: 1464565976}
+  - component: {fileID: 1464565977}
   m_Layer: 0
   m_Name: BackGroundMove
   m_TagString: Untagged
@@ -5339,6 +5340,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 1464565975}
+--- !u!114 &1464565977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1464565972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b4b20035c209d14db6380368fe6fb71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shiftX: 0
 --- !u!1 &1474229566
 GameObject:
   m_ObjectHideFlags: 0
@@ -5470,6 +5484,7 @@ GameObject:
   - component: {fileID: 1496606164}
   - component: {fileID: 1496606162}
   - component: {fileID: 1496606161}
+  - component: {fileID: 1496606163}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Terrain
@@ -5524,6 +5539,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.6733401, y: 0.5985228}
   m_EdgeRadius: 0
+--- !u!114 &1496606163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496606160}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 907e87739a2ce334cb9d289f0da9ffda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shiftX: 0
 --- !u!4 &1496606164
 Transform:
   m_ObjectHideFlags: 0
@@ -5533,7 +5561,7 @@ Transform:
   m_GameObject: {fileID: 1496606160}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.45242596, y: -7.24, z: 0.09047904}
-  m_LocalScale: {x: 57.1, y: 1, z: 1}
+  m_LocalScale: {x: 29.82, y: 1, z: 1}
   m_Children:
   - {fileID: 1083548350}
   - {fileID: 732964448}
@@ -6242,6 +6270,7 @@ GameObject:
   - component: {fileID: 1615874324}
   - component: {fileID: 1615874323}
   - component: {fileID: 1615874322}
+  - component: {fileID: 1615874325}
   m_Layer: 0
   m_Name: Celling
   m_TagString: Terrain
@@ -6305,12 +6334,25 @@ Transform:
   m_GameObject: {fileID: 1615874321}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0.21402597, y: 3.158864, z: 0.09047904}
-  m_LocalScale: {x: -20.02, y: 1, z: 1}
+  m_LocalScale: {x: -10.81, y: 1, z: 1}
   m_Children:
   - {fileID: 440440665}
   m_Father: {fileID: 50074857}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1615874325
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615874321}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91212053d4f820749a88b357093d8202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shiftX: 0
 --- !u!1 &1620222119
 GameObject:
   m_ObjectHideFlags: 0
@@ -7069,7 +7111,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!199 &1739589955
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -7145,7 +7187,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1739589954}
   serializedVersion: 7
-  lengthInSec: 5.96
+  lengthInSec: 10
   simulationSpeed: 1.39
   stopAction: 0
   cullingMode: 0
@@ -7160,7 +7202,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 3
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -7220,7 +7262,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.8
+      scalar: 1
       minScalar: 5
       maxCurve:
         serializedVersion: 2

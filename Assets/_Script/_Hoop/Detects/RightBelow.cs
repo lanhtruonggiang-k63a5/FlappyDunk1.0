@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LeftDetect : MonoBehaviour
+public class RightBelow : MonoBehaviour
 {
     private PolygonCollider2D pc2D;
     // Start is called before the first frame update
@@ -14,12 +14,12 @@ public class LeftDetect : MonoBehaviour
     {
         DetectCollider.listState.Add((int)EnumState.edge);
         // HoopMoving.Instance.isTransform = false;
-        // BackGround.Instance.anim.speed=0f;
+        // BackGround.Instance.anim.speed = 0f;
     }
-    
+
     private void OnCollisionExit2D(Collision2D other)
     {
         // HoopMoving.Instance.isTransform = true;
-        // BackGround.Instance.anim.speed=1f;
+        // BackGround.Instance.anim.speed = 1f;
     }
 }

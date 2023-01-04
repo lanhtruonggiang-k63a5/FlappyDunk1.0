@@ -14,6 +14,7 @@ public class CheckpointDetect : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
+
         if (other.gameObject.CompareTag("ball"))
         {
 
@@ -21,16 +22,12 @@ public class CheckpointDetect : MonoBehaviour
             if (!DetectCollider.IsComplete())
             {
                 BallBehavior.Instance.isDeath = true;
-                Debug.Log(Score.Instance.score);
-                Debug.Log(Score.Instance.lastScore);
-                Debug.Log(PlayerPrefs.GetInt("bestScore"));
+                Debug.Log("death by not complete");
             }
             if (DetectCollider.IsReverse())
             {
                 BallBehavior.Instance.isDeath = true;
-                Debug.Log(Score.Instance.score);
-                Debug.Log(Score.Instance.lastScore);
-                Debug.Log(PlayerPrefs.GetInt("bestScore"));
+                Debug.Log("death by reverse");
 
             }
 
@@ -48,7 +45,7 @@ public class CheckpointDetect : MonoBehaviour
             }
             // Debug.Log("ball Exit");
             DetectCollider.ResetList();
-
+            Disappear.Instance.TurnOnAnim();
 
         }
     }
