@@ -26,7 +26,7 @@ public class BallBehavior : MonoBehaviour
     [SerializeField] private float posX;
     //public
     public bool isDeath;
-    
+
     //private
     private bool startState;
     private int countBounceOnTerrain;
@@ -71,13 +71,15 @@ public class BallBehavior : MonoBehaviour
     }
     private void InitialState()
     {
-        rb.sharedMaterial = noBounce;
+        // rb.sharedMaterial = noBounce;
+        rb.sharedMaterial = null;
         rb.gravityScale = 0f;
         startState = false;
-        
+
     }
     private void StartState()
     {
+        BackGround.Instance.anim.speed = 1f;
         startState = true;
         rb.gravityScale = gravityInGame;
         hoopSpawner.SetActive(true);
@@ -87,7 +89,12 @@ public class BallBehavior : MonoBehaviour
     private void UpBall()
     {
         SoundManager.Instance.PlayFlap();
-        rb.velocity += Vector2.up * velocity;
+        // rb.velocity += Vector2.up * velocity ;
+        // rb.MovePosition(Vector2.up*velocity);
+        // rb.MovePosition(rb.position + Vector2.up );
+        // rb.AddForce(transform.up*velocity,ForceMode2D.Impulse);
+        rb.AddRelativeForce(Vector2.up*velocity);
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -104,6 +111,9 @@ public class BallBehavior : MonoBehaviour
             }
             SoundManager.Instance.PlayBounce();
             isDeath = true;
+            Debug.Log(Score.Instance.score);
+            Debug.Log(Score.Instance.lastScore);
+            Debug.Log(PlayerPrefs.GetInt("bestScore"));
             SetMaterialBounce();
             countBounceOnTerrain++;
         }
@@ -116,7 +126,8 @@ public class BallBehavior : MonoBehaviour
         WingAnimBack.Instance.SetAnimChopWing();
         yield return new WaitForSeconds(1f);
     }
-    public void SetMaterialBounce(){
+    public void SetMaterialBounce()
+    {
         rb.sharedMaterial = bounce;
     }
 
@@ -128,7 +139,7 @@ public class BallBehavior : MonoBehaviour
             SceneManager.LoadScene(0);
         }
     }
-    
+
 
 
 

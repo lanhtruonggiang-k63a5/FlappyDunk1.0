@@ -4,24 +4,23 @@ using UnityEngine;
 using UnityEngine.UI;
 public class ScoreMenu : MonoBehaviour
 {
-    public static  ScoreMenu Instance { get; private set; }
-
-    public Text BestScoreText;
-    public Text LastScoreText;
-
+    // public static ScoreMenu Instance { get; private set; }
+    public Text lastScoreText;
+    // private Text bestScoreText;
     
-
-    void Start()
+    public Text colorScore;
+    private void Awake()
     {
-        Instance = this;
-        PlayerPrefs.SetInt("bestScore", Score.Instance.highScore);
-        PlayerPrefs.SetInt("lastScore", Score.Instance.lastScore);
+        // Instance = this;
+        lastScoreText.text = "LAST: " + PlayerPrefs.GetInt("lastScore").ToString();
+
+        // bestScoreText = GetComponent<Text>();
         
+        colorScore.text = PlayerPrefs.GetInt("bestScore").ToString();
+        colorScore.color = Color.green;
+        
+        // bestScoreText.text = "BEST: "+ colorScore;
+        // bestScoreText.text =  <color=green>bestScoreText</color>" ;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     {
         if(BallBehavior.Instance.isDeath){
             DeathCanvas.SetActive(true);
+            Score.Instance.scoreText.text = "";
             StartCoroutine(LoadMenuScene());
         }
     }

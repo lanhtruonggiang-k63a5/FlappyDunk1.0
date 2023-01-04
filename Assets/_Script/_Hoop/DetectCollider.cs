@@ -39,7 +39,7 @@ public  class DetectCollider : MonoBehaviour
     public static bool IsComplete()
     {
         bool isFalse = true;
-        string stringList = "";
+        // string stringList = "";
         if (!listState.Contains((int)EnumState.above))
         {
             
@@ -57,11 +57,11 @@ public  class DetectCollider : MonoBehaviour
             // Debug.Log("lack below");
             isFalse = false;
         }
-        foreach (int item in listState)
-        {
-            stringList+=" "+item;
-        }
-        Debug.Log("sl:"+ stringList);
+        // foreach (int item in listState)
+        // {
+        //     stringList+=" "+item;
+        // }
+        // Debug.Log("sl:"+ stringList);
         return isFalse;
     }
     public static void ResetList()

@@ -652,6 +652,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 157571559}
+  - component: {fileID: 157571560}
+  - component: {fileID: 157571562}
   m_Layer: 5
   m_Name: ScaleText
   m_TagString: Untagged
@@ -683,6 +685,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -147.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &157571560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157571558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8118313ad7ead42a99061f3354cb2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastScoreText: {fileID: 1154163214}
+  colorScore: {fileID: 1936623193}
+--- !u!222 &157571562
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157571558}
+  m_CullTransparentMesh: 1
 --- !u!1 &199686860
 GameObject:
   m_ObjectHideFlags: 0
@@ -4325,7 +4349,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 413.3}
+  m_AnchoredPosition: {x: 0, y: 430.3}
   m_SizeDelta: {x: 416.08, y: 111.1}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1154163214
@@ -4355,13 +4379,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 3
     m_MaxSize: 87
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'LAST: 100'
+  m_Text: 'LAST: '
 --- !u!222 &1154163215
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -7975,7 +7999,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 466.64}
+  m_AnchoredPosition: {x: 0, y: 481.3}
   m_SizeDelta: {x: 402, y: 130}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1936623193
@@ -8005,13 +8029,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 10
     m_MaxSize: 87
-    m_Alignment: 1
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'BEST: 100'
+  m_Text: 'BEST: '
 --- !u!222 &1936623194
 CanvasRenderer:
   m_ObjectHideFlags: 0

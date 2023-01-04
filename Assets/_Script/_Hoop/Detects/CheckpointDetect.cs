@@ -10,45 +10,80 @@ public class CheckpointDetect : MonoBehaviour
     void Start()
     {
         bc = GetComponent<BoxCollider2D>();
-        
+
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("ball"))
         {
-            
-                Debug.Log(" ball enter");
-                if (!DetectCollider.IsComplete())
-                {
-                    BallBehavior.Instance.isDeath = true;
-                }
-                if (DetectCollider.IsReverse())
-                {
-                    BallBehavior.Instance.isDeath = true;
-                }
 
-                else if (DetectCollider.IsSwish())
-                {
-                    Score.Instance.countSwish++;
-                    Score.Instance.score += Score.Instance.countSwish;
-                }
-                else
-                {
-                    Score.Instance.countSwish = 1;
-                    Score.Instance.score++;
-                }
-                
-            
-        }
-    }
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        if (other.gameObject.CompareTag("ball"))
-        {
-            
-            Debug.Log("ball Exit");
+            // Debug.Log(" ball enter");
+            if (!DetectCollider.IsComplete())
+            {
+                BallBehavior.Instance.isDeath = true;
+                Debug.Log(Score.Instance.score);
+                Debug.Log(Score.Instance.lastScore);
+                Debug.Log(PlayerPrefs.GetInt("bestScore"));
+            }
+            if (DetectCollider.IsReverse())
+            {
+                BallBehavior.Instance.isDeath = true;
+                Debug.Log(Score.Instance.score);
+                Debug.Log(Score.Instance.lastScore);
+                Debug.Log(PlayerPrefs.GetInt("bestScore"));
+
+            }
+
+            else if (DetectCollider.IsSwish())
+            {
+                Score.Instance.PlusSwish();
+                // Score.Instance.countSwish++;
+                // Score.Instance.score += Score.Instance.countSwish;
+            }
+            else
+            {
+                Score.Instance.Plus1();
+                // Score.Instance.countSwish = 1;
+                // Score.Instance.score++;
+            }
+            // Debug.Log("ball Exit");
             DetectCollider.ResetList();
 
+
         }
     }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("ball"))
+    //     {
+    //         Debug.Log("ball Exit");
+    //         DetectCollider.ResetList();
+
+
+    //     }
+    // }
+
+
+    // private void OnTriggerEnter2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("ball"))
+    //     {
+    //         Debug.Log("enter");
+    //     }
+    // }
+    // private void OnTriggerExit2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("ball"))
+    //     {
+    //         Debug.Log("leave");
+    //     }
+    // }
+
+    // private void OnTriggerStay2D(Collider2D other)
+    // {
+    //     if (other.gameObject.CompareTag("ball"))
+    //     {
+    //         Debug.Log("stay");
+    //     }
+    // }
 }
