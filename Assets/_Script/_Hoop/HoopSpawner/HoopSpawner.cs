@@ -10,10 +10,9 @@ public class HoopSpawner : MonoBehaviour
     private Queue<GameObject> pool;
     public GameObject prefab;
 
-    [SerializeField] private int size;
+    [SerializeField] private int sizePool;
     [SerializeField] private float minHeight;
     [SerializeField] private float maxHeight;
-
     //
     [SerializeField] private float spawnTime;
     private float countSpawnTime;
@@ -22,15 +21,12 @@ public class HoopSpawner : MonoBehaviour
     {
         Instance = this;
         pool = new Queue<GameObject>();
-        for (int i = 0; i < size; i++)
+        for (int i = 0; i < sizePool; i++)
         {
-            GameObject obj = Instantiate(prefab);
-            
+            GameObject obj = Instantiate(prefab); 
             obj.SetActive(false);
-            
             pool.Enqueue(obj);
         }
-        
     }
     private void Update()
     {
@@ -41,6 +37,13 @@ public class HoopSpawner : MonoBehaviour
         }
         countSpawnTime += Time.deltaTime;
     }
+    public void SpawnItem()
+    {
+        GameObject objectToSpawn = pool.Dequeue();
+        objectToSpawn.SetActive(true);
+        SetRandomPosition(objectToSpawn);
+        pool.Enqueue(objectToSpawn);
+    }
     private float SetRandomHeight()
     {
         return UnityEngine.Random.Range(minHeight, maxHeight);
@@ -50,13 +53,6 @@ public class HoopSpawner : MonoBehaviour
         obj.transform.position = transform.position + new Vector3(0f, SetRandomHeight(), 0f);
     }
 
-    public void SpawnItem()
-    {
-        
-        GameObject objectToSpawn = pool.Dequeue();
-        objectToSpawn.SetActive(true);
-        SetRandomPosition(objectToSpawn);
-        pool.Enqueue(objectToSpawn);
-    }
+    
    
 }

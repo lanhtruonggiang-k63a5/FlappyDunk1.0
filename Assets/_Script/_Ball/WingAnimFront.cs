@@ -36,7 +36,8 @@ public class WingAnimFront : MonoBehaviour
     {
         // Debug.Log("Chopping");
         anim.SetInteger("state", (int)WingState.chop);
-
+        
+        
     }
 
 

@@ -17,7 +17,7 @@ public class BallBehavior : MonoBehaviour
     public PhysicsMaterial2D bounce;
     public GameObject hoopSpawner;
 
-    
+
 
     //[SerializeField]
     [SerializeField] private float velocity;
@@ -54,9 +54,9 @@ public class BallBehavior : MonoBehaviour
     }
     void SetTransformX(float n)
     {
-        
-            rb.position = new Vector2(n, rb.position.y);
-        
+
+        rb.position = new Vector2(n, rb.position.y);
+
     }
 
 
@@ -101,7 +101,7 @@ public class BallBehavior : MonoBehaviour
         rb.velocity = Vector2.zero;
         rb.velocity += Vector2.up * velocity;
     }
-    
+
 
     private void OnCollisionEnter2D(Collision2D other)
     {
@@ -110,12 +110,13 @@ public class BallBehavior : MonoBehaviour
             if (countBounceOnTerrain == 0)
             {
                 SoundManager.Instance.PlayWrong();
-            }
-            if (countBounceOnTerrain == 1)
-            {
                 StartCoroutine(WingPop());
             }
-            SoundManager.Instance.PlayBounce();
+            
+            if (countBounceOnTerrain < 4)
+            {
+                SoundManager.Instance.PlayBounce();
+            }
             isDeath = true;
             SetMaterialBounce();
             countBounceOnTerrain++;
@@ -125,8 +126,10 @@ public class BallBehavior : MonoBehaviour
     private IEnumerator WingPop()
     {
         SoundManager.Instance.PlayCrash();
+
         WingAnimFront.Instance.SetAnimChopWing();
         WingAnimBack.Instance.SetAnimChopWing();
+        // WingChopTransform.Instance.ChopWing = true;
         yield return new WaitForSeconds(1f);
     }
     public void SetMaterialBounce()

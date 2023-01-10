@@ -45,7 +45,7 @@ public class CheckpointDetect : MonoBehaviour
             }
             // Debug.Log("ball Exit");
             DetectCollider.ResetList();
-            Disappear.Instance.TurnOnAnim();
+            // Disappear.Instance.TurnOnAnim();
 
         }
     }
