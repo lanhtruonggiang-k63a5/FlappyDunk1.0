@@ -44,6 +44,7 @@ public class HoopSpawner : MonoBehaviour
         SetRandomPosition(objectToSpawn);
         pool.Enqueue(objectToSpawn);
     }
+    
     private float SetRandomHeight()
     {
         return UnityEngine.Random.Range(minHeight, maxHeight);

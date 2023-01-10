@@ -49,38 +49,5 @@ public class CheckpointDetect : MonoBehaviour
 
         }
     }
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("ball"))
-    //     {
-    //         Debug.Log("ball Exit");
-    //         DetectCollider.ResetList();
-
-
-    //     }
-    // }
-
-
-    // private void OnTriggerEnter2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("ball"))
-    //     {
-    //         Debug.Log("enter");
-    //     }
-    // }
-    // private void OnTriggerExit2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("ball"))
-    //     {
-    //         Debug.Log("leave");
-    //     }
-    // }
-
-    // private void OnTriggerStay2D(Collider2D other)
-    // {
-    //     if (other.gameObject.CompareTag("ball"))
-    //     {
-    //         Debug.Log("stay");
-    //     }
-    // }
+    
 }

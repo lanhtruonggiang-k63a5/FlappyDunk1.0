@@ -24,10 +24,13 @@ public class BallBehavior : MonoBehaviour
     [SerializeField] private float gravityInGame;
 
     [SerializeField] private float posX;
+
+    [SerializeField] private float velocityX;
     //public
     public bool isDeath;
 
     //private
+    private bool ballMoveRight;
     private bool startState;
     private int countBounceOnTerrain;
 
@@ -44,6 +47,10 @@ public class BallBehavior : MonoBehaviour
     {
         // SetTransformX(posX);
         OnFirstClick();
+        if(ballMoveRight){
+            rb.velocity += Vector2.right * velocityX * Time.deltaTime;
+
+        }
         if (OnClick() && !isDeath)
         {
             UpBall();
@@ -81,7 +88,8 @@ public class BallBehavior : MonoBehaviour
     }
     private void StartState()
     {
-        BackGround.Instance.anim.speed = 1f;
+        ballMoveRight = true;
+        ParralaxBackGround.Instance.isMoving = true;
         startState = true;
         rb.gravityScale = gravityInGame;
         hoopSpawner.SetActive(true);
