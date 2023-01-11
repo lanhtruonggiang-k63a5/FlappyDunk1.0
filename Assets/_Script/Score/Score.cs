@@ -11,6 +11,9 @@ public class Score : MonoBehaviour
     public int bestScore;
     public int lastScore;
     public Text scoreText;
+
+    public GameObject smokeX2;
+    public GameObject smokeX3;
     void Start()
     {
         Instance = this;
@@ -24,6 +27,7 @@ public class Score : MonoBehaviour
         LoadBestScore();
         scoreText.text = score.ToString();
         LoadLastScore();
+
     }
     void LoadBestScore()
     {
@@ -41,11 +45,23 @@ public class Score : MonoBehaviour
     public void Plus1()
     {
         countSwish = 1;
+        smokeX2.SetActive(false);
+        smokeX3.SetActive(false);
         score += countSwish;
     }
     public void PlusSwish()
     {
+
         countSwish++;
+        if (countSwish == 2)
+        {
+            smokeX2.SetActive(true);
+        }
+        if (countSwish == 3)
+        {
+            smokeX2.SetActive(false);
+            smokeX3.SetActive(true);
+        }
         score += countSwish;
     }
 }

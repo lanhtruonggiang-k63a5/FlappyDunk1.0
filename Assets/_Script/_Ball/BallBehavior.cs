@@ -34,7 +34,7 @@ public class BallBehavior : MonoBehaviour
     private bool startState;
     private int countBounceOnTerrain;
 
-    void Start()
+    void Awake()
     {
         Instance = this;
         pc = GetComponent<CircleCollider2D>();

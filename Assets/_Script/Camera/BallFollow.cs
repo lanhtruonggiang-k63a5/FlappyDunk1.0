@@ -11,13 +11,14 @@ public class BallFollow : MonoBehaviour
     {
         tf = GetComponent<Transform>();
     }
-
-    // Update is called once per frame
     void Update()
     {
-        tf.position = new Vector3(
-                            BallBehavior.Instance.transform.position.x+shiftX,
-                            transform.position.y,
-                            transform.position.z);
+        if (GameManager.Instance.EndlessGame.activeSelf)
+        {
+            tf.position = new Vector3(
+                                BallBehavior.Instance.transform.position.x + shiftX,
+                                transform.position.y,
+                                transform.position.z);
+        }
     }
 }

@@ -9,6 +9,7 @@ public class HoopSpawner : MonoBehaviour
     public static HoopSpawner Instance ;
     private Queue<GameObject> pool;
     public GameObject prefab;
+    public GameObject hoopContainer;
 
     [SerializeField] private int sizePool;
     [SerializeField] private float minHeight;
@@ -30,7 +31,8 @@ public class HoopSpawner : MonoBehaviour
         pool = new Queue<GameObject>();
         for (int i = 0; i < sizePool; i++)
         {
-            GameObject obj = Instantiate(prefab); 
+            GameObject obj = Instantiate(prefab);
+            obj.transform.parent = hoopContainer.transform; 
             obj.SetActive(false);
             pool.Enqueue(obj);
         }
@@ -48,9 +50,13 @@ public class HoopSpawner : MonoBehaviour
     {
         GameObject objectToSpawn = pool.Dequeue();
         objectToSpawn.SetActive(true);
+        // DisappearDetect.Instance.Appear();
+        
+        
         SetRandomPosition(objectToSpawn);
         pool.Enqueue(objectToSpawn);
     }
+    
     
     private float SetRandomHeight()
     {
@@ -60,6 +66,7 @@ public class HoopSpawner : MonoBehaviour
     {
         obj.transform.position = transform.position + new Vector3(0f, SetRandomHeight(), 0f);
     }
+    
 
 
     

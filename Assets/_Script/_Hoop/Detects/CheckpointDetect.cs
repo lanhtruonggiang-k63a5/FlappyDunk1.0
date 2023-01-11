@@ -4,8 +4,11 @@ using UnityEngine;
 
 public class CheckpointDetect : MonoBehaviour
 {
+    public GameObject hoop;
     private GameObject checker;
     private BoxCollider2D bc;
+    
+
     // Start is called before the first frame update
     void Start()
     {
@@ -17,8 +20,6 @@ public class CheckpointDetect : MonoBehaviour
 
         if (other.gameObject.CompareTag("ball"))
         {
-
-            // Debug.Log(" ball enter");
             if (!DetectCollider.IsComplete())
             {
                 BallBehavior.Instance.isDeath = true;
@@ -28,25 +29,20 @@ public class CheckpointDetect : MonoBehaviour
             {
                 BallBehavior.Instance.isDeath = true;
                 Debug.Log("death by reverse");
-
             }
 
-            else if (DetectCollider.IsSwish())
+            if (DetectCollider.IsSwish())
             {
                 Score.Instance.PlusSwish();
-                // Score.Instance.countSwish++;
-                // Score.Instance.score += Score.Instance.countSwish;
             }
             else
             {
                 Score.Instance.Plus1();
-                // Score.Instance.countSwish = 1;
-                // Score.Instance.score++;
             }
-            // Debug.Log("ball Exit");
+            // Debug.Log(" ball enter");
+            
             DetectCollider.ResetList();
-            // Disappear.Instance.TurnOnAnim();
-
+            hoop.SetActive(false);
         }
     }
     

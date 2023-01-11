@@ -16,25 +16,37 @@ public class GameManager : MonoBehaviour
     }
     private void Update()
     {
-        if(BallBehavior.Instance.isDeath){
-            
-            Score.Instance.scoreText.text = "";
-            LoadMenuScene();
+        if (EndlessGame.activeSelf)
+        {
+            if (BallBehavior.Instance.isDeath)
+            {
+                Score.Instance.scoreText.text = "";
+                LoadMenuScene();
+            }
         }
     }
-    public void LoadMenuScene(){
+    public void LoadMenuScene()
+    {
         MenuCanvas.SetActive(true);
         EndlessGame.SetActive(false);
+
     }
 
-    public void LoadEndless(){
-        MenuCanvas.SetActive(false);
+    public void LoadEndless()
+    {
+        // bug: endless không hiện trên hiearchy trên hierachy dù return true;
+        // loadScene có 2 tác dụng: reset gameover, fix đc lỗi trên. 
+
         EndlessGame.SetActive(true);
+        MenuCanvas.SetActive(false);
+        SceneManager.LoadScene(0);
 
+        Debug.Log("EndlessGame "+EndlessGame.activeInHierarchy);
+        Debug.Log("MenuCanvas "+ MenuCanvas.activeInHierarchy);
     }
-} 
-    
-    
+}
+
+
 
 
 
