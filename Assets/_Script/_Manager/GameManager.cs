@@ -2,11 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
 
-    public GameObject DeathCanvas;
+    public GameObject EndlessGame;
+    public GameObject MenuCanvas;
     void Start()
     {
         Instance = this;
@@ -15,17 +17,21 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if(BallBehavior.Instance.isDeath){
-            DeathCanvas.SetActive(true);
+            
             Score.Instance.scoreText.text = "";
-            StartCoroutine(LoadMenuScene());
+            LoadMenuScene();
         }
     }
-    private IEnumerator LoadMenuScene(){
-
-        yield return new WaitForSeconds(2f);
-        SceneManager.LoadScene(1);
+    public void LoadMenuScene(){
+        MenuCanvas.SetActive(true);
+        EndlessGame.SetActive(false);
     }
- 
+
+    public void LoadEndless(){
+        MenuCanvas.SetActive(false);
+        EndlessGame.SetActive(true);
+
+    }
 } 
     
     
