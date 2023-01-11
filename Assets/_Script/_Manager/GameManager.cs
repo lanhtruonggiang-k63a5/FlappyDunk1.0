@@ -12,9 +12,6 @@ public class GameManager : MonoBehaviour
         Instance = this;
 
     }
-    
-
-    
     private void Update()
     {
         if(BallBehavior.Instance.isDeath){

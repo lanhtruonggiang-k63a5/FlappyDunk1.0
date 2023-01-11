@@ -17,6 +17,13 @@ public class HoopSpawner : MonoBehaviour
     [SerializeField] private float spawnTime;
     private float countSpawnTime;
     // Start is called before the first frame update
+
+
+// HoopSpawner work???
+// Start: make a Queue(FIFO) pool, create all Instance obj.
+// set them all false, add to queue.
+// Update: when countSpawn > spawn time-> SpawnItem() and reset time.
+// SpawnItem : dequeue(remove) obj, active it, set position and enqueue(add) obj.
     void Start()
     {
         Instance = this;
@@ -53,6 +60,7 @@ public class HoopSpawner : MonoBehaviour
     {
         obj.transform.position = transform.position + new Vector3(0f, SetRandomHeight(), 0f);
     }
+
 
     
    

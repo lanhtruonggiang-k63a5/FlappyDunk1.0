@@ -70,6 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a53ae47d496d5fa4cb2311b8dff0fb1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hoop: {fileID: 1615263650639197753}
 --- !u!1 &807758042772997072
 GameObject:
   m_ObjectHideFlags: 0
@@ -82,7 +83,7 @@ GameObject:
   - component: {fileID: 6390900569773427864}
   - component: {fileID: 9163971939747956902}
   m_Layer: 0
-  m_Name: ParticleSyst
+  m_Name: ParticleSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
