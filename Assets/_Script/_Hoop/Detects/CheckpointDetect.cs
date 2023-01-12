@@ -30,19 +30,6 @@ public class CheckpointDetect : MonoBehaviour
                 BallBehavior.Instance.isDeath = true;
                 Debug.Log("death by reverse");
             }
-
-            if (DetectCollider.IsSwish())
-            {
-                Score.Instance.PlusSwish();
-            }
-            else
-            {
-                Score.Instance.Plus1();
-            }
-            // Debug.Log(" ball enter");
-            
-            DetectCollider.ResetList();
-            hoop.SetActive(false);
         }
     }
     

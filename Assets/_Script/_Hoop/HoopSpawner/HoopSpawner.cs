@@ -7,6 +7,7 @@ using System.Linq;
 public class HoopSpawner : MonoBehaviour
 {
     public static HoopSpawner Instance ;
+    public static bool spawnNext;
     private Queue<GameObject> pool;
     public GameObject prefab;
     public GameObject hoopContainer;
@@ -16,7 +17,6 @@ public class HoopSpawner : MonoBehaviour
     [SerializeField] private float maxHeight;
     //
     [SerializeField] private float spawnTime;
-    private float countSpawnTime;
     // Start is called before the first frame update
 
 
@@ -36,15 +36,16 @@ public class HoopSpawner : MonoBehaviour
             obj.SetActive(false);
             pool.Enqueue(obj);
         }
+        spawnNext=true;
     }
     private void Update()
     {
-        if (countSpawnTime > spawnTime)
+        if (spawnNext)
         {
+            spawnNext=false;
             SpawnItem();
-            countSpawnTime = 0f;
         }
-        countSpawnTime += Time.deltaTime;
+        
     }
     public void SpawnItem()
     {

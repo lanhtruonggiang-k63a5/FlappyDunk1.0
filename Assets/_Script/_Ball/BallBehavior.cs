@@ -8,6 +8,7 @@ public class BallBehavior : MonoBehaviour
     //Singleton
     public static BallBehavior Instance { get; private set; }
 
+    
 
     //Component
     private CircleCollider2D pc;
@@ -20,7 +21,7 @@ public class BallBehavior : MonoBehaviour
 
 
     //[SerializeField]
-    [SerializeField] private float velocity;
+    [SerializeField] private float velocityY;
     [SerializeField] private float gravityInGame;
 
     [SerializeField] private float posX;
@@ -48,8 +49,8 @@ public class BallBehavior : MonoBehaviour
         // SetTransformX(posX);
         OnFirstClick();
         if(ballMoveRight){
-            rb.velocity += Vector2.right * velocityX * Time.deltaTime;
-
+            rb.velocity =  new Vector2(velocityX,rb.velocity.y) ;
+            Debug.Log(Time.deltaTime);
         }
         if (OnClick() && !isDeath)
         {
@@ -59,14 +60,23 @@ public class BallBehavior : MonoBehaviour
         }
         ReloadScene();
     }
+    private void UpBall()
+    {
+        SoundManager.Instance.PlayFlap();
+        // rb.velocity += Vector2.up * velocity ;
+        // rb.MovePosition(Vector2.up*velocity);
+        // rb.MovePosition(rb.position + Vector2.up );
+        // rb.AddForce(transform.up*velocity,ForceMode2D.Impulse);
+        // rb.AddRelativeForce(Vector2.up*velocity);
+        // rb.AddForce(Vector2.up * velocity, ForceMode2D.Impulse);
+        rb.velocity = new Vector2(rb.velocity.x, 0f);
+        // rb.velocity += Vector2.up * velocityY;
+        rb.velocity = new Vector2(rb.velocity.x,velocityY);
+    }
     void SetTransformX(float n)
     {
-
         rb.position = new Vector2(n, rb.position.y);
-
     }
-
-
     bool OnClick()
     {
         return Input.GetMouseButtonDown(0);
@@ -96,19 +106,7 @@ public class BallBehavior : MonoBehaviour
         SoundManager.Instance.PlayWhistle();
         Pause.Instance.pauseButton.SetActive(true);
     }
-    private void UpBall()
-    {
-        SoundManager.Instance.PlayFlap();
-        // rb.velocity += Vector2.up * velocity ;
-        // rb.MovePosition(Vector2.up*velocity);
-        // rb.MovePosition(rb.position + Vector2.up );
-        // rb.AddForce(transform.up*velocity,ForceMode2D.Impulse);
-        // rb.AddRelativeForce(Vector2.up*velocity);
-
-        // rb.AddForce(Vector2.up * velocity, ForceMode2D.Impulse);
-        rb.velocity = Vector2.zero;
-        rb.velocity += Vector2.up * velocity;
-    }
+    
 
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -121,7 +119,7 @@ public class BallBehavior : MonoBehaviour
                 StartCoroutine(WingPop());
             }
             
-            if (countBounceOnTerrain < 4)
+            if (countBounceOnTerrain < 3)
             {
                 SoundManager.Instance.PlayBounce();
             }
@@ -134,7 +132,6 @@ public class BallBehavior : MonoBehaviour
     private IEnumerator WingPop()
     {
         SoundManager.Instance.PlayCrash();
-
         WingAnimFront.Instance.SetAnimChopWing();
         WingAnimBack.Instance.SetAnimChopWing();
         // WingChopTransform.Instance.ChopWing = true;
