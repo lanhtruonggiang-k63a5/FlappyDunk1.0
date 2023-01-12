@@ -50,7 +50,6 @@ public class BallBehavior : MonoBehaviour
         OnFirstClick();
         if(ballMoveRight){
             rb.velocity =  new Vector2(velocityX,rb.velocity.y) ;
-            Debug.Log(Time.deltaTime);
         }
         if (OnClick() && !isDeath)
         {
@@ -72,10 +71,6 @@ public class BallBehavior : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 0f);
         // rb.velocity += Vector2.up * velocityY;
         rb.velocity = new Vector2(rb.velocity.x,velocityY);
-    }
-    void SetTransformX(float n)
-    {
-        rb.position = new Vector2(n, rb.position.y);
     }
     bool OnClick()
     {
@@ -124,6 +119,8 @@ public class BallBehavior : MonoBehaviour
                 SoundManager.Instance.PlayBounce();
             }
             isDeath = true;
+            VibratorEnable.CallVibra();
+           
             SetMaterialBounce();
             countBounceOnTerrain++;
         }

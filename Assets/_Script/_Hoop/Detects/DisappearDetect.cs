@@ -63,7 +63,6 @@ public class DisappearDetect : MonoBehaviour
         //Debug to console
         //anim run on animator
         //but still not show on game 
-        Debug.Log("enable -> default state");
         this.hoopAnim.SetInteger("state", (int)HoopEnum.defaultState);
     }
 

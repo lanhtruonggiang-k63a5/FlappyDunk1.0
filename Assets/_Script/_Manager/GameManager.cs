@@ -41,9 +41,10 @@ public class GameManager : MonoBehaviour
         MenuCanvas.SetActive(false);
         SceneManager.LoadScene(0);
 
-        Debug.Log("EndlessGame "+EndlessGame.activeInHierarchy);
-        Debug.Log("MenuCanvas "+ MenuCanvas.activeInHierarchy);
+        // Debug.Log("EndlessGame "+EndlessGame.activeInHierarchy);
+        // Debug.Log("MenuCanvas "+ MenuCanvas.activeInHierarchy);
     }
+    
 }
 
 

@@ -9,6 +9,8 @@ public class Pause : MonoBehaviour, IPointerDownHandler
     
     public GameObject pauseCanvas;
     public GameObject pauseButton;
+
+    
     
     private void Start()
     {
@@ -17,14 +19,12 @@ public class Pause : MonoBehaviour, IPointerDownHandler
     
     public void OnPointerDown(PointerEventData eventData)
     {
-        Debug.Log("Pause Button Click");
         pauseState=true;
         pauseCanvas.SetActive(true);
         Time.timeScale = 0f;
         pauseButton.SetActive(false);
     }
     public void Resume(){
-        Debug.Log("resume ");
         pauseButton.SetActive(true);
         pauseState=false;
         pauseCanvas.SetActive(false);
