@@ -51,9 +51,6 @@ public class HoopSpawner : MonoBehaviour
     {
         GameObject objectToSpawn = pool.Dequeue();
         objectToSpawn.SetActive(true);
-        // DisappearDetect.Instance.Appear();
-        
-        
         SetRandomPosition(objectToSpawn);
         pool.Enqueue(objectToSpawn);
     }

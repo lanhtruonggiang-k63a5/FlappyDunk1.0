@@ -11,14 +11,21 @@ public class DisappearDetect : MonoBehaviour
     private BoxCollider2D bc;
     private Animator hoopAnim;
     
+    public ParticleSystem swishStar;
     public GameObject hoop;
+
     // Start is called before the first frame update
+    [Obsolete]
     private void Awake()
     {
         Instance = this;
         bc = GetComponent<BoxCollider2D>();
         hoopAnim = GetComponentInParent<Animator>();
+        swishStar.enableEmission = false;
+
     }
+
+    [Obsolete]
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("ball"))
@@ -36,6 +43,7 @@ public class DisappearDetect : MonoBehaviour
 
             else if (DetectCollider.IsSwish())
             {
+                
                 HoopSpawner.spawnNext = true;
                 Score.Instance.PlusSwish();
                 DetectCollider.ResetList();
@@ -52,10 +60,14 @@ public class DisappearDetect : MonoBehaviour
         }
 
     }
+
+    [Obsolete]
     public IEnumerator DisappearObject()
     {
+        swishStar.enableEmission = true;
         hoopAnim.SetInteger("state", (int)HoopEnum.disappearState);
         yield return new WaitForSeconds(0.5f);
+        swishStar.enableEmission = false;
         hoop.SetActive(false);
     }
     private void OnEnable()

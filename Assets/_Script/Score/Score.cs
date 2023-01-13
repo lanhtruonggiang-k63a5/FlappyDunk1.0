@@ -51,7 +51,6 @@ public class Score : MonoBehaviour
     }
     public void PlusSwish()
     {
-
         countSwish++;
         if (countSwish == 2)
         {
