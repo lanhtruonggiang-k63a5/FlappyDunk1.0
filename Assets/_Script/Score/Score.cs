@@ -12,8 +12,7 @@ public class Score : MonoBehaviour
     public int lastScore;
     public Text scoreText;
 
-    public GameObject smokeX2;
-    public GameObject smokeX3;
+   
     void Start()
     {
         Instance = this;
@@ -45,21 +44,23 @@ public class Score : MonoBehaviour
     public void Plus1()
     {
         countSwish = 1;
-        smokeX2.SetActive(false);
-        smokeX3.SetActive(false);
+        
         score += countSwish;
     }
+
+    [System.Obsolete]
     public void PlusSwish()
     {
         countSwish++;
         if (countSwish == 2)
         {
-            smokeX2.SetActive(true);
+            HoopParticle.Instance.OnX2();
+            BallTrail.Instance.OnX2Trail();
         }
         if (countSwish == 3)
         {
-            smokeX2.SetActive(false);
-            smokeX3.SetActive(true);
+            HoopParticle.Instance.OnX3();
+            BallTrail.Instance.OnX3Trail();
         }
         score += countSwish;
     }

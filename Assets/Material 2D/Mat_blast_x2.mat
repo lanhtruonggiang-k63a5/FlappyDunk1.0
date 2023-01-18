@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: x2_Blast Big
+  m_Name: Mat_blast_x2
   m_Shader: {fileID: 10723, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -40,7 +40,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 73517fdf49e707f43aa2ef61909cb9d2, type: 3}
+        m_Texture: {fileID: 2800000, guid: 51e96de1b86b97e41aa0ad91bd461b10, type: 3}
         m_Scale: {x: 1, y: 1.43}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:

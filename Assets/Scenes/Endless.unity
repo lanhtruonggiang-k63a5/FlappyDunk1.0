@@ -1274,8 +1274,6 @@ MonoBehaviour:
   bestScore: 0
   lastScore: 0
   scoreText: {fileID: 0}
-  smokeX2: {fileID: 1987418118}
-  smokeX3: {fileID: 334541657}
 --- !u!114 &250372712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1517,7 +1515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &334541658
 Transform:
   m_ObjectHideFlags: 0
@@ -6392,6 +6390,7 @@ GameObject:
   - component: {fileID: 391621463}
   - component: {fileID: 391621462}
   - component: {fileID: 391621464}
+  - component: {fileID: 391621466}
   m_Layer: 0
   m_Name: Ball
   m_TagString: ball
@@ -6474,6 +6473,20 @@ Transform:
   m_Father: {fileID: 50074857}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &391621466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 391621461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c16718367630994e8940b7be0898118, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  x2Trail: {fileID: 1987418121}
+  x3Trail: {fileID: 334541660}
 --- !u!1 &440440664
 GameObject:
   m_ObjectHideFlags: 0
@@ -15120,7 +15133,7 @@ SpriteRenderer:
   m_SortingLayer: -1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 6caf4613dc8175d41819d093c6d0da8a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.68235296}
+  m_Color: {r: 0.9706401, g: 1, b: 0.37169808, a: 0.6392157}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
