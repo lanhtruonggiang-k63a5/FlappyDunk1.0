@@ -45,7 +45,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.565975, y: -2.1862247}
+  m_Offset: {x: 0.52656806, y: -2.1862247}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -56,7 +56,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.6141971, y: 2.6703901}
+  m_Size: {x: 1.693011, y: 2.6703901}
   m_EdgeRadius: 0
 --- !u!114 &1504709654526241566
 MonoBehaviour:
@@ -120,7 +120,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: e4943d2589c540644af4e5a8b2dcb0c6, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -162,22 +162,9 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: -0.91359055, y: 0.18667789}
+    - - {x: -1.285722, y: 0.18667789}
       - {x: -0.8614308, y: 0.17077516}
-      - {x: -0.8432124, y: 0.046230707}
-      - {x: -0.85197794, y: -0.0070603117}
-      - {x: -0.8618497, y: -0.038297795}
-      - {x: -0.8622434, y: -0.044117935}
-      - {x: -0.8890383, y: -0.08693977}
-      - {x: -0.9319138, y: -0.10767544}
-      - {x: -0.9722933, y: -0.11909247}
-      - {x: -1.02419, y: -0.10812994}
-      - {x: -1.0857149, y: -0.07834072}
-      - {x: -1.1535274, y: -0.03212442}
-      - {x: -1.200033, y: 0.016756251}
-      - {x: -1.2625215, y: 0.1000475}
-      - {x: -1.2872223, y: 0.15791117}
-      - {x: -1.2892565, y: 0.18797989}
+      - {x: -0.8097623, y: -0.23251963}
 --- !u!1 &1615263648904288730
 GameObject:
   m_ObjectHideFlags: 0
@@ -575,7 +562,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
-  m_Material: {fileID: 6200000, guid: e4943d2589c540644af4e5a8b2dcb0c6, type: 2}
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -606,7 +593,8 @@ PolygonCollider2D:
   m_Points:
     m_Paths:
     - - {x: -1.2634118, y: 0.24011032}
-      - {x: -0.98583615, y: 0.5460259}
+      - {x: -1.0380948, y: 0.544127}
+      - {x: -0.94174254, y: 0.53683966}
       - {x: -0.82226896, y: 0.24536718}
 --- !u!1 &1615263650243682293
 GameObject:

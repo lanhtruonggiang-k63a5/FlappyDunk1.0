@@ -13,6 +13,7 @@ public class RightDetect : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         DetectCollider.listState.Add((int)EnumState.edge);
+        BallBehavior.Instance.CallBallStop();
         // HoopMoving.Instance.isTransform = false;
         // BackGround.Instance.anim.speed = 0f;
     }

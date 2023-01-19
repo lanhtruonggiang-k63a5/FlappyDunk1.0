@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             if (BallBehavior.Instance.isDeath)
             {
+                
                 Score.Instance.scoreText.text = "";
                 LoadMenuScene();
             }

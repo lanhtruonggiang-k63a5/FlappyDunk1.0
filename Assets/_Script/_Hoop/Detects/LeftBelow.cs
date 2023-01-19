@@ -13,6 +13,7 @@ public class LeftBelow : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         DetectCollider.listState.Add((int)EnumState.edge);
+        BallBehavior.Instance.CallPauseBallMoveRight();
         // HoopMoving.Instance.isTransform = false;
         // BackGround.Instance.anim.SetBool("isForward", true);
     }

@@ -32,6 +32,7 @@ public class BallBehavior : MonoBehaviour
 
     //private
     private bool ballMoveRight;
+    private bool ballMoveLeft;
     private bool startState;
     private int countBounceOnTerrain;
 
@@ -50,7 +51,10 @@ public class BallBehavior : MonoBehaviour
         OnFirstClick();
         if(ballMoveRight){
             rb.velocity =  new Vector2(velocityX,rb.velocity.y) ;
+        }else if (ballMoveLeft){
+            rb.velocity = new Vector2(-velocityX,rb.velocity.y);
         }
+
         if (OnClick() && !isDeath)
         {
             UpBall();
@@ -124,7 +128,27 @@ public class BallBehavior : MonoBehaviour
             SetMaterialBounce();
             countBounceOnTerrain++;
         }
+        
 
+    }
+    public void CallPauseBallMoveRight(){
+        StartCoroutine(PauseBallMoveRight());
+    }
+    private IEnumerator PauseBallMoveRight(){
+        ballMoveRight = false;
+        ballMoveLeft = true;
+        yield return new WaitForSeconds(0.2f);
+        ballMoveLeft = false;
+        ballMoveRight = true;
+        
+    }
+    public void CallBallStop(){
+        StartCoroutine(BallStop());
+    }
+    private IEnumerator BallStop(){
+        ballMoveRight = false;
+        yield return new WaitForSeconds(0.2f);
+        ballMoveRight = true;
     }
     private IEnumerator WingPop()
     {

@@ -1295,7 +1295,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: a1fa6c881c486254d837eeb586c21efc, type: 3}
     m_FontSize: 90
     m_FontStyle: 1
     m_BestFit: 0
@@ -2425,7 +2425,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -6454,6 +6454,7 @@ MonoBehaviour:
   gravityInGame: 2
   posX: 0
   velocityX: 2.2
+  bounceBack: -15
   isDeath: 0
 --- !u!4 &391621465
 Transform:
@@ -6487,6 +6488,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   x2Trail: {fileID: 1987418121}
   x3Trail: {fileID: 334541660}
+  x3Smoke: {fileID: 929385172}
 --- !u!1 &440440664
 GameObject:
   m_ObjectHideFlags: 0
@@ -9315,7 +9317,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2
@@ -18733,7 +18735,7 @@ ParticleSystem:
           m_PostInfinity: 2
           m_RotationOrder: 4
   EmissionModule:
-    enabled: 1
+    enabled: 0
     serializedVersion: 4
     rateOverTime:
       serializedVersion: 2

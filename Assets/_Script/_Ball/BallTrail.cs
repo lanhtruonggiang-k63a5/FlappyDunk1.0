@@ -8,6 +8,7 @@ public class BallTrail : MonoBehaviour
     // Start is called before the first frame update
     public ParticleSystem x2Trail;
     public ParticleSystem x3Trail;
+    public ParticleSystem x3Smoke;
 
     [System.Obsolete]
     void Start()
@@ -15,6 +16,7 @@ public class BallTrail : MonoBehaviour
         Instance = this;
         x2Trail.enableEmission = false;
         x3Trail.enableEmission = false;
+        x3Smoke.enableEmission = false;
 
     }
 
@@ -26,5 +28,6 @@ public class BallTrail : MonoBehaviour
     [System.Obsolete]
     public void OnX3Trail(){
         x3Trail.enableEmission = true;
+        x3Smoke.enableEmission = true;
    }
 }
