@@ -11,8 +11,9 @@ public class Score : MonoBehaviour
     public int bestScore;
     public int lastScore;
     public Text scoreText;
+    public CameraShake cameraShake;
 
-   
+
     void Start()
     {
         Instance = this;
@@ -44,13 +45,14 @@ public class Score : MonoBehaviour
     public void Plus1()
     {
         countSwish = 1;
-        
+
         score += countSwish;
     }
 
     [System.Obsolete]
     public void PlusSwish()
     {
+        StartCoroutine(cameraShake.Shake(CameraShake.Instance.duration, CameraShake.Instance.magnitude));
         countSwish++;
         if (countSwish == 2)
         {

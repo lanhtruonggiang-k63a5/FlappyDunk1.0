@@ -42,8 +42,18 @@ public class HoopSpawner : MonoBehaviour
     {
         if (spawnNext)
         {
-            spawnNext=false;
-            SpawnItem();
+            
+            if (Score.Instance.score >= 0 && Score.Instance.score <5)
+            {
+                spawnNext = false;
+                SpawnItem();
+            }
+            else if (Score.Instance.score >= 5 )
+            {
+                spawnNext = false;
+                SpawnItem();
+                HoopRotate.Instance.SetAngle();
+            }
         }
         
     }
@@ -54,6 +64,7 @@ public class HoopSpawner : MonoBehaviour
         SetRandomPosition(objectToSpawn);
         pool.Enqueue(objectToSpawn);
     }
+    
     
     
     private float SetRandomHeight()

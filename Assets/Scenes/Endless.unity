@@ -1274,6 +1274,7 @@ MonoBehaviour:
   bestScore: 0
   lastScore: 0
   scoreText: {fileID: 0}
+  cameraShake: {fileID: 519420033}
 --- !u!114 &250372712
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6454,7 +6455,6 @@ MonoBehaviour:
   gravityInGame: 2
   posX: 0
   velocityX: 2.2
-  bounceBack: -15
   isDeath: 0
 --- !u!4 &391621465
 Transform:
@@ -6990,6 +6990,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -7075,6 +7076,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &519420033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5cea78d3d5cd476418289c61e8f089de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  duration: 0.1
+  magnitude: 0.1
 --- !u!1 &549782713
 GameObject:
   m_ObjectHideFlags: 0
