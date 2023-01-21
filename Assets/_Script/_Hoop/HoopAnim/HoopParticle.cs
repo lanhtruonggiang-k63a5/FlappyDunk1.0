@@ -32,6 +32,7 @@ public class HoopParticle : MonoBehaviour
         x2Smoke.enableEmission = true;
 
     }
+    
 
     [System.Obsolete]
     public void OnX3()

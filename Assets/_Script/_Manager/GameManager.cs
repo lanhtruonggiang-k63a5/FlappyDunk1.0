@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+
+
+[System.Obsolete]
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }

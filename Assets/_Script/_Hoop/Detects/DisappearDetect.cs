@@ -9,9 +9,8 @@ public class DisappearDetect : MonoBehaviour
 
     
     private BoxCollider2D bc;
-    private Animator hoopAnim;
     
-    
+    private Hoop hoopComponent;
 
     public GameObject hoop;
 
@@ -21,9 +20,7 @@ public class DisappearDetect : MonoBehaviour
     {
         Instance = this;
         bc = GetComponent<BoxCollider2D>();
-        hoopAnim = GetComponentInParent<Animator>();
-        
-
+        hoopComponent = GetComponent<Hoop>();
     }
 
     [Obsolete]
@@ -31,6 +28,10 @@ public class DisappearDetect : MonoBehaviour
     {
         if (other.gameObject.CompareTag("ball"))
         {
+            if(HoopMoving.Instance != null){
+                HoopMoving.Instance.SetIsMoving(false);
+                Debug.Log("not moving");
+            }
             if (!DetectCollider.IsComplete())
             {
                 BallBehavior.Instance.isDeath = true;
@@ -63,7 +64,7 @@ public class DisappearDetect : MonoBehaviour
 
     public IEnumerator DisappearObject()
     {
-        hoopAnim.SetInteger("state", (int)HoopEnum.disappearState);
+        hoopComponent.SetDisappearState();
         yield return new WaitForSeconds(0.5f);
         hoop.SetActive(false);
     }
@@ -72,7 +73,8 @@ public class DisappearDetect : MonoBehaviour
         //Debug to console
         //anim run on animator
         //but still not show on game 
-        this.hoopAnim.SetInteger("state", (int)HoopEnum.defaultState);
+        hoopComponent.SetDefaultState();
     }
+
 
 }

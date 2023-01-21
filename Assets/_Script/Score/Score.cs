@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
+[System.Obsolete]
 public class Score : MonoBehaviour
 {
     public static Score Instance { get; private set; }
@@ -47,6 +49,9 @@ public class Score : MonoBehaviour
         countSwish = 1;
 
         score += countSwish;
+        BallTrail.Instance.OffX2Trail();
+        BallTrail.Instance.OffX3Trail();
+
     }
 
     [System.Obsolete]
@@ -63,6 +68,7 @@ public class Score : MonoBehaviour
         {
             HoopParticle.Instance.OnX3();
             BallTrail.Instance.OnX3Trail();
+            BallTrail.Instance.OffX2Trail();
         }
         score += countSwish;
     }

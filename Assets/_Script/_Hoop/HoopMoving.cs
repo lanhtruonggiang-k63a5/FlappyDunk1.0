@@ -7,37 +7,43 @@ public class HoopMoving : MonoBehaviour
     public static HoopMoving Instance { get; private set; }
     [SerializeField] private float velocity;
 
-    public GameObject point1;
-    public GameObject point2;
+    [SerializeField] private GameObject[] waypoints;
+    private int currentWayPointsIndex = 0;
 
-    private float p1X, p1Y;
-    private float p2X, p2Y;
-
-
+    private bool isMoving;
     private void Start()
     {
-        p1X = point1.transform.position.x;
-        p1Y = point1.transform.position.y;
-        p2X = point2.transform.position.x;
-        p2X = point2.transform.position.y;
+
 
         Instance = this;
+        isMoving = true;
     }
     // Update is called once per frame
     void Update()
     {
-        var posX = transform.position.x;
-        var posY = transform.position.y;
 
-        if (p1Y < posY + 0.005f || p1Y > posY - 0.005f)
+        if (Vector2.Distance(waypoints[currentWayPointsIndex].transform.position, transform.position) < 0.1f)
         {
-            transform.Translate(new Vector2(p1X - posX, p1Y - posY) * velocity * Time.deltaTime);
+
+            currentWayPointsIndex += 1;
+            if (currentWayPointsIndex >= waypoints.Length)
+            {
+                currentWayPointsIndex = 0;
+            }
+
         }
-        else
+        if (isMoving)
         {
-            transform.Translate(new Vector2(p2X - posX, p2Y - posY) * velocity * Time.deltaTime);
+            transform.position =
+            Vector2.MoveTowards(transform.position,
+                                 waypoints[currentWayPointsIndex].transform.position,
+                                  Time.deltaTime * velocity);
         }
     }
-
-
+    public void SetIsMoving(bool moving){
+        isMoving = moving;
+    }
 }
+
+
+

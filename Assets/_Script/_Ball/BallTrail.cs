@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Obsolete]
 public class BallTrail : MonoBehaviour
 {
-    public static  BallTrail Instance { get; private set; }
+    public static BallTrail Instance { get; private set; }
     // Start is called before the first frame update
     public ParticleSystem x2Trail;
     public ParticleSystem x3Trail;
     public ParticleSystem x3Smoke;
 
-    [System.Obsolete]
     void Start()
     {
         Instance = this;
@@ -20,14 +20,23 @@ public class BallTrail : MonoBehaviour
 
     }
 
-    [System.Obsolete]
-    public void OnX2Trail(){
+    public void OnX2Trail()
+    {
         x2Trail.enableEmission = true;
-   }
+    }
+    public void OffX2Trail(){
+        x2Trail.enableEmission = false;
 
-    [System.Obsolete]
-    public void OnX3Trail(){
+    }
+
+
+    public void OnX3Trail()
+    {
         x3Trail.enableEmission = true;
         x3Smoke.enableEmission = true;
-   }
+    }
+    public void OffX3Trail(){
+        x3Trail.enableEmission = false;
+        x3Smoke.enableEmission = false;
+    }
 }

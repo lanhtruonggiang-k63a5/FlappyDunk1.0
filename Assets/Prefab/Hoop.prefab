@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1610133585850441122}
   - component: {fileID: 1114572939746286240}
   - component: {fileID: 1504709654526241566}
+  - component: {fileID: 4149088103159587720}
   m_Layer: 0
   m_Name: Collider_Disappear
   m_TagString: Untagged
@@ -71,6 +72,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoop: {fileID: 1615263650639197753}
+--- !u!114 &4149088103159587720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751036556375010685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdfa9f1f97a49145926da1e4f13aa76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoopAnim: {fileID: 0}
 --- !u!1 &1036806130594271339
 GameObject:
   m_ObjectHideFlags: 0
@@ -713,9 +727,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1615263650639197752}
-  - component: {fileID: 1615263650639197751}
   - component: {fileID: 9043736246329709968}
   - component: {fileID: 2196328401428266592}
+  - component: {fileID: 2290306980695864610}
   m_Layer: 0
   m_Name: Hoop
   m_TagString: Untagged
@@ -745,19 +759,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1615263650639197751
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1615263650639197753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 014f12984c85f6544951d8898a5c1cac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocity: 0
 --- !u!95 &9043736246329709968
 Animator:
   serializedVersion: 3
@@ -794,6 +795,19 @@ MonoBehaviour:
   x2Smoke: {fileID: 7544384149033423589}
   x3Smoke: {fileID: 8005136664733318193}
   swishStar: {fileID: 982016455298638747}
+--- !u!114 &2290306980695864610
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1615263650639197753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbdfa9f1f97a49145926da1e4f13aa76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoopAnim: {fileID: 0}
 --- !u!1 &1615263650777931595
 GameObject:
   m_ObjectHideFlags: 0
