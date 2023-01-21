@@ -12,10 +12,11 @@ public class GameManager : MonoBehaviour
 
     public GameObject EndlessGame;
     public GameObject MenuCanvas;
+    public Animator slideMenu;
     void Start()
     {
         Instance = this;
-
+        
     }
     private void Update()
     {
@@ -23,16 +24,19 @@ public class GameManager : MonoBehaviour
         {
             if (BallBehavior.Instance.isDeath)
             {
-                
+
                 Score.Instance.scoreText.text = "";
-                LoadMenuScene();
+                StartCoroutine(LoadMenuScene());
             }
         }
     }
-    public void LoadMenuScene()
+    public IEnumerator LoadMenuScene()
     {
-        MenuCanvas.SetActive(true);
         EndlessGame.SetActive(false);
+        MenuCanvas.SetActive(true);
+        slideMenu.Play("CanvasSlide");
+        yield return new WaitForSeconds(1f);
+
 
     }
 
@@ -48,7 +52,7 @@ public class GameManager : MonoBehaviour
         // Debug.Log("EndlessGame "+EndlessGame.activeInHierarchy);
         // Debug.Log("MenuCanvas "+ MenuCanvas.activeInHierarchy);
     }
-    
+
 }
 
 

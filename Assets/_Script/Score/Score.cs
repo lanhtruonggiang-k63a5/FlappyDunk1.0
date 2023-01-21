@@ -51,7 +51,8 @@ public class Score : MonoBehaviour
         score += countSwish;
         BallTrail.Instance.OffX2Trail();
         BallTrail.Instance.OffX3Trail();
-
+        BallSkin.Instance.SetSkinNormal();
+        WingSkin.Instance.SetSpriteNormal();
     }
 
     [System.Obsolete]
@@ -64,11 +65,13 @@ public class Score : MonoBehaviour
             HoopParticle.Instance.OnX2();
             BallTrail.Instance.OnX2Trail();
         }
-        if (countSwish == 3)
+        if (countSwish >= 3)
         {
             HoopParticle.Instance.OnX3();
             BallTrail.Instance.OnX3Trail();
             BallTrail.Instance.OffX2Trail();
+            BallSkin.Instance.SetSkinX3();
+            WingSkin.Instance.SetSpriteX3();
         }
         score += countSwish;
     }

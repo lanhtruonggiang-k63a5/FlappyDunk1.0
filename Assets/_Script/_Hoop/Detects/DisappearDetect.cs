@@ -10,9 +10,9 @@ public class DisappearDetect : MonoBehaviour
     
     private BoxCollider2D bc;
     
-    private Hoop hoopComponent;
 
     public GameObject hoop;
+    public HoopAnim hoopAnimComponent;
 
     // Start is called before the first frame update
     [Obsolete]
@@ -20,7 +20,6 @@ public class DisappearDetect : MonoBehaviour
     {
         Instance = this;
         bc = GetComponent<BoxCollider2D>();
-        hoopComponent = GetComponent<Hoop>();
     }
 
     [Obsolete]
@@ -64,7 +63,7 @@ public class DisappearDetect : MonoBehaviour
 
     public IEnumerator DisappearObject()
     {
-        hoopComponent.SetDisappearState();
+        hoopAnimComponent.SetDisappearState();
         yield return new WaitForSeconds(0.5f);
         hoop.SetActive(false);
     }
@@ -73,7 +72,7 @@ public class DisappearDetect : MonoBehaviour
         //Debug to console
         //anim run on animator
         //but still not show on game 
-        hoopComponent.SetDefaultState();
+        // hoopAnimComponent.SetDefaultState();
     }
 
 

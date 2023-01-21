@@ -131,10 +131,10 @@ public class BallBehavior : MonoBehaviour
         
 
     }
-    public void CallPauseBallMoveRight(){
-        StartCoroutine(PauseBallMoveRight());
+    public void CallBallMoveLeft(){
+        StartCoroutine(BallMoveLeft());
     }
-    private IEnumerator PauseBallMoveRight(){
+    private IEnumerator BallMoveLeft(){
         ballMoveRight = false;
         ballMoveLeft = true;
         yield return new WaitForSeconds(0.2f);
@@ -147,7 +147,7 @@ public class BallBehavior : MonoBehaviour
     }
     private IEnumerator BallStop(){
         ballMoveRight = false;
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.35f);
         ballMoveRight = true;
     }
     private IEnumerator WingPop()

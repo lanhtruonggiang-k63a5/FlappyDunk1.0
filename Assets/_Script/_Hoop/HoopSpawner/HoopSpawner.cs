@@ -11,15 +11,14 @@ public class HoopSpawner : MonoBehaviour
     public static bool spawnNext;
     private Queue<GameObject> pool;
     public GameObject prefab;
-    private Hoop hoopComponnent ;
     public GameObject hoopContainer;
+
 
     [SerializeField] private int sizePool;
     [SerializeField] private float minHeight;
     [SerializeField] private float maxHeight;
-    //
-    [SerializeField] private float spawnTime;
-    
+    private HoopAnim hoopAnimComponent;
+
     // Start is called before the first frame update
 
 
@@ -30,12 +29,11 @@ public class HoopSpawner : MonoBehaviour
     // SpawnItem : dequeue(remove) obj, active it, set position and enqueue(add) obj.
     void Start()
     {
-        hoopComponnent = GetComponent<Hoop>();
+        hoopAnimComponent = prefab.GetComponent<HoopAnim>();
         Instance = this;
         pool = new Queue<GameObject>();
         for (int i = 0; i < sizePool; i++)
         {
-            
             GameObject obj = Instantiate(prefab);
             obj.transform.parent = hoopContainer.transform;
             obj.SetActive(false);
@@ -54,33 +52,31 @@ public class HoopSpawner : MonoBehaviour
     }
     public void SpawnItem()
     {
-        
+        SetDefaultItem();
         GameObject objectToSpawn = pool.Dequeue();
         objectToSpawn.SetActive(true);
-        SetHoopDefaultAnim();
         SetRandomPosition(objectToSpawn);
         pool.Enqueue(objectToSpawn);
-        
-        
-    }
-    public void RotateItem(){
-        foreach (GameObject item in pool)
-        {
-            if(!gameObject.activeSelf){
-                HoopRotate.Instance.SetAngle();
-            }
-        }
-    }
-    public void SetHoopDefaultAnim(){
-        foreach (GameObject item in pool)
-        {
-            if (!gameObject.activeSelf)
-            {
-                hoopComponnent.SetDefaultState();
-            }
-        }
-    }
 
+
+    }
+    public void RotateItem()
+    {
+        foreach (GameObject item in pool)
+        {
+
+            HoopRotate.Instance.SetAngle();
+
+        }
+    }
+    public void SetDefaultItem()
+    {
+        foreach (GameObject item in pool)
+        {
+            Debug.Log("set default state");
+            hoopAnimComponent.SetDefaultState();
+        }
+    }
 
 
     private float SetRandomHeight()
