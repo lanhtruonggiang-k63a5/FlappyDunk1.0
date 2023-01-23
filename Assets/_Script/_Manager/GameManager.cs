@@ -32,22 +32,32 @@ public class GameManager : MonoBehaviour
     }
     public IEnumerator LoadMenuScene()
     {
-        EndlessGame.SetActive(false);
-        MenuCanvas.SetActive(true);
-        slideMenu.Play("CanvasSlide");
-        yield return new WaitForSeconds(1f);
+        
+        yield return new WaitForSeconds(2f);
+
+        
+        
+        slideMenu.SetInteger("state",(int)MenuEnum.left2center);
+        yield return new WaitForSeconds(0.7f);
 
 
     }
 
-    public void LoadEndless()
+    public void OnCallEndless(){
+        Debug.Log("click ball");
+        StartCoroutine(LoadEndless());
+    }
+    public IEnumerator LoadEndless()
     {
         // bug: endless không hiện trên hiearchy trên hierachy dù return true;
         // loadScene có 2 tác dụng: reset gameover, fix đc lỗi trên. 
 
-        EndlessGame.SetActive(true);
-        MenuCanvas.SetActive(false);
-        SceneManager.LoadScene(0);
+        slideMenu.SetInteger("state", (int)MenuEnum.center2right);
+        yield return new WaitForSeconds(0.7f);
+
+        
+        
+        Debug.Log("bruh");
 
         // Debug.Log("EndlessGame "+EndlessGame.activeInHierarchy);
         // Debug.Log("MenuCanvas "+ MenuCanvas.activeInHierarchy);

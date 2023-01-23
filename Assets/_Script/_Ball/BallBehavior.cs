@@ -8,7 +8,7 @@ public class BallBehavior : MonoBehaviour
     //Singleton
     public static BallBehavior Instance { get; private set; }
 
-    
+
 
     //Component
     private CircleCollider2D pc;
@@ -49,10 +49,13 @@ public class BallBehavior : MonoBehaviour
     {
         // SetTransformX(posX);
         OnFirstClick();
-        if(ballMoveRight){
-            rb.velocity =  new Vector2(velocityX,rb.velocity.y) ;
-        }else if (ballMoveLeft){
-            rb.velocity = new Vector2(-velocityX,rb.velocity.y);
+        if (ballMoveRight)
+        {
+            rb.velocity = new Vector2(velocityX, rb.velocity.y);
+        }
+        else if (ballMoveLeft)
+        {
+            rb.velocity = new Vector2(-velocityX, rb.velocity.y);
         }
 
         if (OnClick() && !isDeath)
@@ -61,7 +64,6 @@ public class BallBehavior : MonoBehaviour
             WingAnimBack.Instance.CallAnimFlap();
             WingAnimFront.Instance.CallAnimFlap();
         }
-        ReloadScene();
     }
     private void UpBall()
     {
@@ -74,7 +76,7 @@ public class BallBehavior : MonoBehaviour
         // rb.AddForce(Vector2.up * velocity, ForceMode2D.Impulse);
         rb.velocity = new Vector2(rb.velocity.x, 0f);
         // rb.velocity += Vector2.up * velocityY;
-        rb.velocity = new Vector2(rb.velocity.x,velocityY);
+        rb.velocity = new Vector2(rb.velocity.x, velocityY);
     }
     bool OnClick()
     {
@@ -105,47 +107,59 @@ public class BallBehavior : MonoBehaviour
         SoundManager.Instance.PlayWhistle();
         Pause.Instance.pauseButton.SetActive(true);
     }
-    
+
 
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Terrain"))
+        if (other.gameObject.CompareTag("ceiling") || other.gameObject.CompareTag("floor"))
         {
+
+
             if (countBounceOnTerrain == 0)
             {
                 SoundManager.Instance.PlayWrong();
+                
+            }
+            if (other.gameObject.CompareTag("floor"))
+            {
+                WingSplit.Instance.SetTransformMenu(this.transform.position);
                 StartCoroutine(WingPop());
             }
-            
+
             if (countBounceOnTerrain < 3)
             {
                 SoundManager.Instance.PlayBounce();
             }
             isDeath = true;
             VibratorEnable.CallVibra();
-           
+
             SetMaterialBounce();
             countBounceOnTerrain++;
+
         }
-        
+
 
     }
-    public void CallBallMoveLeft(){
+    public void CallBallMoveLeft()
+    {
         StartCoroutine(BallMoveLeft());
     }
-    private IEnumerator BallMoveLeft(){
+    private IEnumerator BallMoveLeft()
+    {
         ballMoveRight = false;
         ballMoveLeft = true;
         yield return new WaitForSeconds(0.2f);
         ballMoveLeft = false;
         ballMoveRight = true;
-        
+
     }
-    public void CallBallStop(){
+    public void CallBallStop()
+    {
         StartCoroutine(BallStop());
     }
-    private IEnumerator BallStop(){
+    private IEnumerator BallStop()
+    {
         ballMoveRight = false;
         yield return new WaitForSeconds(0.35f);
         ballMoveRight = true;
@@ -164,13 +178,6 @@ public class BallBehavior : MonoBehaviour
     }
 
 
-    public void ReloadScene()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SceneManager.LoadScene(0);
-        }
-    }
 
 
 

@@ -12,6 +12,8 @@ TagManager:
   - aboveTerrain
   - ball
   - hoop
+  - floor
+  - ceiling
   layers:
   - Default
   - TransparentFX
